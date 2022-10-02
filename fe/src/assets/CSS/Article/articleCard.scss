@@ -1,0 +1,24 @@
+.articleCard {
+  margin: 0.5rem;
+  min-width: 40%;
+  background-color: #eee;
+  &-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  &-content {
+
+  }
+  &-tags {
+    .tag {
+      margin: 0 0.2rem;
+      border: 1px solid #000;
+      border-radius: 0.6rem;
+      text-align: center;
+      padding: 0 0.2rem;
+    }
+  }
+  &-lastModified {
+
+  }
+}
