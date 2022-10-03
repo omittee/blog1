@@ -1,7 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  // firefox
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-color-level-3) transparent;
+
+  // chromium
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+    background-color: transparent;
+  }
+  // 定义滚动条轨道：内阴影+圆角
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  // 定义滑块：内阴影+圆角
+  &::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: linear-gradient(to top left, var(--theme-color-level-2), var(--theme-color-level-3), var(--theme-color-level-4));
+  }
+}
+.hideScrollBar {
+  // firefox
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 html,
 body,
 #root {
-  margin: 0;
   width: 100%;
   height: 100%;
   font-size: 14px;
@@ -9,10 +38,63 @@ body,
     font-size: 12px;
   }
 }
+img {
+  vertical-align: middle;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 
-.ellipsis {
+//theme 
+
+[data-theme=dark]:root {
+  --bg-color: black;
+  --bg-color-2: #999;
+  --bg-reverse-color: white;
+  --bg-liner: linear-gradient(-173deg, rgba(100,100,100,0.20) 0%, #000000 100%),
+  linear-gradient(72deg, rgba(100,100,100,0.25) 25%, rgba(0,0,0,0.25) 100%),
+  radial-gradient(47% 102%, rgba(100,100,100,0.50) 0%, rgba(21,24,32,0.60) 120%);
+  --text-theme-color: white;
+  --theme-color-level-0: #300a00;
+  --theme-color-level-1: #390300;
+  --theme-color-level-2: #4d0400;
+  --theme-color-level-3: #c60021;
+  --theme-color-level-4: #e1453c;
+}
+:root {
+  --bg-color: white;
+  --bg-color-2: #999;
+  --bg-reverse-color: black;
+  --bg-liner: 
+  linear-gradient(-180deg, #E1E6EC 2%, #F0F4F7 96%),
+  radial-gradient(at 50% 100%, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.5) 200%);
+  --text-theme-color: black;
+  --theme-color-level-0: #e8fbff;
+  --theme-color-level-1: #c8f6fe;
+  --theme-color-level-2: #9cecfb;
+  --theme-color-level-3: #52aafc;
+  --theme-color-level-4: #1c73ff;
+
+}
+
+.title-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
   white-space: nowrap;
+}
+.content-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.divider {
+  margin: 0 auto;
+  border: 0;
+  padding-top: 2px;
+  background: linear-gradient(to right, transparent, var(--theme-color-level-3), transparent);
 }

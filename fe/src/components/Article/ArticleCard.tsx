@@ -9,20 +9,34 @@ export interface Article {
 }
 export interface Props {
   article: Article;
+  index: number;
 }
 
 function ArticleCard(props: Props) {
   return (
     <div className="articleCard">
-      <div className="articleCard-title ellipsis">{props.article.title}</div>
-      <div className="articleCard-content ellipsis">{props.article.content}</div>
-      <div className="articleCard-tags">
-        {props.article.tags.split(" ").map((x) => (
-          <span className="tag">{x}</span>
-        ))}
+      <div className="cover">
+        <img
+          src={"https://api.yimian.xyz/img?type=wallpaper&random=" + props.index}
+          alt=""
+        />
       </div>
-      <div className="articleCard-lastModified">
-        {props.article.lastModified}
+      <div className="info">
+        <div className="info-title title-ellipsis">{props.article.title}<hr className="divider" /></div>
+        
+        <div className="info-content content-ellipsis">
+          {props.article.content}
+        </div>
+        <div className="footer">
+          <div className="tags hideScrollBar">
+            {props.article.tags.trim().split(" ").map((x) => (
+              <span className="tag">{x}</span>
+            ))}
+          </div>
+          <div className="lastModified">
+            {props.article.lastModified}
+          </div>
+        </div>
       </div>
     </div>
   );

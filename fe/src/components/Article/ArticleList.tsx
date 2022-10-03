@@ -5,7 +5,7 @@ import "@/assets/CSS/Article/articleList.scss"
 console.log(data);
 
 function ArticleList() {
-  const listItem = data.map(x=><ArticleCard article={x}></ArticleCard>)
+  const listItem = data.map((x, index)=><ArticleCard article={x} index={index}></ArticleCard>)
   return (
     <div className='articleList'>{listItem}</div>
   )
