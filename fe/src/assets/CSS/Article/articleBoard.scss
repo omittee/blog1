@@ -1,4 +1,5 @@
 .articleBoard {
   background-color: var(--bg-color);
   padding: 0 1rem;
+  scroll-snap-align: start;
 }

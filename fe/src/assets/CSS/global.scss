@@ -51,7 +51,8 @@ img {
   --bg-color: black;
   --bg-color-2: #999;
   --bg-reverse-color: white;
-  --bg-liner: linear-gradient(-173deg, rgba(100,100,100,0.20) 0%, #000000 100%),
+  --about-bg-linear: linear-gradient(-180deg, #15140F 0%, #34312C 97%);
+  --card-bg-linear: linear-gradient(-173deg, rgba(100,100,100,0.20) 0%, #000000 100%),
   linear-gradient(72deg, rgba(100,100,100,0.25) 25%, rgba(0,0,0,0.25) 100%),
   radial-gradient(47% 102%, rgba(100,100,100,0.50) 0%, rgba(21,24,32,0.60) 120%);
   --text-theme-color: white;
@@ -65,8 +66,11 @@ img {
   --bg-color: white;
   --bg-color-2: #999;
   --bg-reverse-color: black;
-  --bg-liner: 
-  linear-gradient(-180deg, #E1E6EC 2%, #F0F4F7 96%),
+  --about-bg-linear: 
+  linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%),
+  radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+  --card-bg-linear: 
+  linear-gradient(-180deg, #f0f0f0 2%, #f9fafa 96%),
   radial-gradient(at 50% 100%, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.5) 200%);
   --text-theme-color: black;
   --theme-color-level-0: #e8fbff;
