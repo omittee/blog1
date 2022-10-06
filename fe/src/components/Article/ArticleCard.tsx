@@ -29,8 +29,8 @@ function ArticleCard(props: Props) {
         </div>
         <div className="footer">
           <div className="tags hideScrollBar">
-            {props.article.tags.trim().split(" ").map((x) => (
-              <span className="tag">{x}</span>
+            {props.article.tags.trim().split(" ").map((x, i) => (
+              <span className="tag" key={i}>{x}</span>
             ))}
           </div>
           <div className="lastModified">

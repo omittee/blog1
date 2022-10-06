@@ -1,0 +1,102 @@
+.decoContainer {
+  position: relative;
+  // width: 40rem;
+  // height: 40rem;
+  // perspective: 1200px;
+  background-color: #eee;
+  transform-style: preserve-3d;
+  transform: rotate3d(0, 1, 0, 90deg);
+  & *,
+  & *::after,
+  & *::before {
+    position: absolute;
+    content: '';
+    display: block;
+    background-color: #fff;
+    transform-style: preserve-3d;
+  }
+  .floor {
+    top: 0;
+    left: 0;
+    width: 60rem;
+    height: 60rem;
+    background-color: #ddd;
+    transform:translate(-50%, -50%) rotateX(90deg) translateZ(-43rem);
+  }
+  .base {
+    width: 16rem;
+    height: 16rem;
+    background-color: transparent;
+    transform: translate(-50%, calc(50% + 19rem));
+    &-ud {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transform: rotateX(90deg);
+      &::before {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(-4rem);
+        background-color: #ccc;
+      }
+      &::after {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(-8rem);
+        background-color: #ccc;
+      }
+    }
+    &-lr {
+      bottom: 0;
+      width: 100%;
+      height: 25%;
+      // background-color: transparent;
+      transform: rotateY(90deg);
+      &::before {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(8rem);
+        background-color: #ccc;
+      }
+      &::after {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(-8rem);
+        background-color: #ccc;
+      }
+    }
+    &-fe {
+      bottom: 0;
+      width: 100%;
+      height: 25%;
+      // background-color: transparent;
+      &::before {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(8rem);
+        background-color: #ccc;
+      }
+      &::after {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(-8rem);
+        background-color: #ccc;
+      }
+    }
+  }
+  .pillar {
+    width: 2rem;
+    height: 2rem;
+    background-color: #ddd;
+    transform: translate(50%, 50%);
+  }
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
