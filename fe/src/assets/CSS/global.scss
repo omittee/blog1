@@ -18,7 +18,12 @@
   // 定义滑块：内阴影+圆角
   &::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: linear-gradient(to top left, var(--theme-color-level-2), var(--theme-color-level-3), var(--theme-color-level-4));
+    background: linear-gradient(
+      to top left,
+      var(--theme-color-level-2),
+      var(--theme-color-level-3),
+      var(--theme-color-level-4)
+    );
   }
 }
 .hideScrollBar {
@@ -45,16 +50,41 @@ img {
   height: 100%;
 }
 
-//theme 
+//theme
 
-[data-theme=dark]:root {
+[data-theme="dark"]:root {
   --bg-color: black;
-  --bg-color-2: #999;
+  --bg-color-2: 0, 0, 0;
   --bg-reverse-color: white;
-  --about-bg-linear: linear-gradient(-180deg, #15140F 0%, #34312C 97%);
-  --card-bg-linear: linear-gradient(-173deg, rgba(100,100,100,0.20) 0%, #000000 100%),
-  linear-gradient(72deg, rgba(100,100,100,0.25) 25%, rgba(0,0,0,0.25) 100%),
-  radial-gradient(47% 102%, rgba(100,100,100,0.50) 0%, rgba(21,24,32,0.60) 120%);
+  --about-bg-linear: linear-gradient(
+      -173deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      #000000 100%
+    ),
+    linear-gradient(
+      72deg,
+      rgba(255, 255, 255, 0.25) 25%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    radial-gradient(
+      at 47% 102%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(21, 24, 32, 0.6) 120%
+    );
+  --card-bg-linear: linear-gradient(
+      -173deg,
+      rgba(100, 100, 100, 0.2) 0%,
+      #000000 100%
+    ),
+    linear-gradient(
+      72deg,
+      rgba(100, 100, 100, 0.25) 25%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    radial-gradient(
+      rgba(100, 100, 100, 0.5) 0%,
+      rgba(21, 24, 32, 0.6) 120% at 47% 102%
+    );
   --text-theme-color: white;
   --theme-color-level-0: #300a00;
   --theme-color-level-1: #390300;
@@ -62,17 +92,24 @@ img {
   --theme-color-level-3: #c60021;
   --theme-color-level-4: #e1453c;
   --rgb-theme-color: 225, 69, 60;
+  --wood-color: #3e2723;
 }
 :root {
   --bg-color: white;
-  --bg-color-2: #999;
+  --bg-color-2: 255, 255, 255;
   --bg-reverse-color: black;
-  --about-bg-linear: 
-  linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%),
-  radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
-  --card-bg-linear: 
-  linear-gradient(-180deg, #f0f0f0 2%, #f9fafa 96%),
-  radial-gradient(at 50% 100%, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.5) 200%);
+  --about-bg-linear: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%),
+    radial-gradient(
+      at top left,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  --card-bg-linear: linear-gradient(-180deg, #f0f0f0 2%, #f9fafa 96%),
+    radial-gradient(
+      at 50% 100%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(0, 0, 0, 0.5) 200%
+    );
   --text-theme-color: black;
   --theme-color-level-0: #e8fbff;
   --theme-color-level-1: #c8f6fe;
@@ -102,5 +139,10 @@ img {
   margin: 0 auto;
   border: 0;
   padding-top: 2px;
-  background: linear-gradient(to right, transparent, var(--theme-color-level-3), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--theme-color-level-3),
+    transparent
+  );
 }

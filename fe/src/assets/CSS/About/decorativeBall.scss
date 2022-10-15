@@ -1,0 +1,55 @@
+.circle[data-component="DecorativeBall"] {
+  transform-style: preserve-3d;
+  --size: 24em;
+  --shadow-size: 6em;
+  width: var(--size);
+  height: var(--size);
+  background-color: transparent;
+  border-radius: 50%;
+  animation: ballRoll 3s linear infinite;
+  & *,
+  & *::before,
+  & *::after {
+    position: absolute;
+    display: block;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 var(--shadow-size) rgba(var(--rgb-theme-color), 0.9);
+    background-color: transparent;
+    border: calc(var(--size) / 48) solid var(--theme-color-level-4);
+    border-radius: 50%;
+  }
+  & * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--size) / 24 * 23);
+    height: calc(var(--size) / 24 * 23);
+    &::before,
+    &::after {
+      content: "";
+      width: calc(var(--size) / 2 * 1.732 - var(--size) / 24);
+      height: calc(var(--size) / 2 * 1.732 - var(--size) / 24);
+    }
+    &::before {
+      transform: translateZ(calc(var(--size) / 4));
+    }
+    &::after {
+      transform: translateZ(calc(var(--size) / -4));
+    }
+  }
+  .ud {
+    transform: rotateX(90deg);
+  }
+  .lr {
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes ballRoll {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  100% {
+    transform: rotate3d(5, 7, 3, 360deg);
+  }
+}

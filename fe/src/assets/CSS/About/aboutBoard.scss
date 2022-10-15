@@ -1,4 +1,4 @@
-.aboutBoard {
+.aboutBoard[data-component="AboutBoard"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,4 +13,80 @@
   perspective: 3000px;
   perspective-origin: center 0%;
   transform: scale(1);
+  #infoControl {
+    display: none;
+    &:not(:checked) + .infoCard {
+      .bgBox {
+        clip-path: circle(0 at calc(100% - 5em) calc(100% - 5em));
+        transition: clip-path 1s;
+      }
+      .ball {
+        opacity: 0;
+        transform: scale(1) translate(50%, 77%);
+        right: 50%;
+        bottom: 50%;
+        transition: transform 1.5s 1s, right 1.5s 1s, bottom 1.5s 1s,
+          opacity 1s 1.5s;
+      }
+    }
+    &:checked + .infoCard {
+      .bgBox {
+        clip-path: circle(200% at calc(100% - 5em) calc(100% - 5em));
+        transition: clip-path 1s 1.5s;
+      }
+      .ball {
+        opacity: 1;
+        transform: scale(0.5);
+        right: 0;
+        bottom: 0;
+        transition: transform 1.5s, right 1.5s ease-out, bottom 1.5s ease-out,
+          opacity 1s;
+      }
+    }
+  }
+  .infoCard {
+    position: relative;
+    width: 80%;
+    max-width: 30rem;
+    height: 80%;
+    z-index: 10;
+    border-radius: 3rem;
+    background-color: transparent;
+    overflow: hidden;
+    .bgBox {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(var(--bg-color-2), 0.4);
+      backdrop-filter: blur(0.5rem);
+    }
+    .ball {
+      position: absolute;
+      width: 10em;
+      height: 10em;
+      .circle {
+        --size: 10em;
+        --shadow-size: 2em;
+      }
+    }
+    .name {
+      padding: 2rem;
+      width: 8rem;
+      height: 2rem;
+    }
+    @keyframes svg-text-anim {
+       40% {
+          stroke-dashoffset: 0;
+          fill: transparent;
+        }
+        60% {
+          stroke-dashoffset: 0;
+          fill: #6a92f1;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          fill: #6a92f1;
+        }
+        
+    }
+  }
 }

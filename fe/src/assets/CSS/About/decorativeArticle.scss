@@ -1,196 +1,150 @@
-.decoContainer {
+[data-component="DecorativeArticle"] {
   position: absolute;
   bottom: 0;
-  // width: 40rem;
-  // height: 40rem;
-  // perspective: 1200px;
-  background-color: #eee;
   transform-style: preserve-3d;
-  transform: rotate3d(0, 1, 0, -0deg);
-  animation: roll 60s linear infinite;
-  font-size: 1.25rem;
-  & *,
-  & *::after,
-  & *::before {
+  z-index: -1;
+  *,
+  *::after,
+  *::before {
     width: 100%;
     height: 100%;
     position: absolute;
     display: block;
-    background-color: #fff;
     transform-style: preserve-3d;
   }
-  .floor {
-    top: 0;
-    left: 0;
-    width: 60rem;
-    height: 60rem;
-    background-color: #ddd;
-    transform: translate(-50%, -50%) rotateX(90deg) translateZ(4.5rem);
-  }
-  .square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    --size: 32em;
-    font-size: 0.8em;
-    width: var(--size);
-    height: var(--size);
-    background-color: transparent;
-    box-sizing: border-box;
-    &-front,
-    &-back {
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      background-color: transparent;
-      border: calc(var(--size) / 20) solid var(--wood-color);
-      box-shadow: 0 0 1rem #0007 inset;
-      &::after {
-        top: calc(var(--size) / -20);
-        left: calc(var(--size) / -20);
-        content: "";
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        border: calc(var(--size) / 20) solid transparent;
-        border-image: url("~@public/wood.png") 30;
-      }
-    }
-    &-front {
-      transform: translateZ(calc(var(--size) / 20));
-    }
-    &-back {
-      transform: translateZ(calc(var(--size) / -20));
-    }
-    &-top,
-    &-bottom,
-    &-left,
-    &-right {
-      width: 100%;
-      height: calc(var(--size) / 10);
-      background-color: transparent;
-      &::before,
-      &::after {
-        content: "";
-        background-color: var(--wood-color);
-        background-image: url("~@public/wood.png");
-        box-shadow: 0 0 1rem #0007 inset;
-      }
-      &::before {
-        transform: translateZ(calc(var(--size) / 20));
-      }
-    }
-    &-top {
+  .decoContainer {
+    width: 0rem;
+    height: 0rem;
+    background-color: #eee;
+    transform: rotate3d(0, 1, 0, -0deg);
+    animation: roll 60s linear infinite;
+    font-size: 1.25rem;
+    .floor {
       top: 0;
       left: 0;
-      transform: rotateX(90deg);
+      width: 60rem;
+      height: 60rem;
+      background-color: #ddd;
+      transform: translate(-50%, -50%) rotateX(90deg) translateZ(4.5rem);
     }
-    &-bottom {
-      bottom: 0;
-      left: 0;
-      transform: rotateX(-90deg);
-    }
-    &-left {
-      left: 0;
-      height: 100%;
-      width: calc(var(--size) / 10);
-      transform: rotateY(-90deg);
-    }
-    &-right {
-      right: 0;
-      height: 100%;
-      width: calc(var(--size) / 10);
-      transform: rotateY(90deg);
-    }
-  }
-  .squareBox {
-    bottom: 0;
-    transform: translate(-50%, -35%) rotateZ(45deg);
-  }
-  .square-1 {
-    animation: squareRoll-1 30s linear reverse infinite;
-  }
-  .square-2 {
-    animation: squareRoll-2 15s linear infinite;
-  }
-  .square-3 {
-    animation: squareRoll-1 7.5s linear infinite;
-  }
-  .square-4 {
-    animation: squareRoll-2 3.75s linear reverse infinite;
-  }
-  .circle {
-    --size: 24em;
-    width: var(--size);
-    height: var(--size);
-    background-color: transparent;
-    border-radius: 50%;
-    animation: ballRoll 3s linear infinite;
-    & *,
-    & *::before,
-    & *::after {
-      box-shadow: 0 0 12em rgba(var(--rgb-theme-color), 0.9);
-      background-color: transparent;
-      border: 0.5em solid var(--theme-color-level-4);
-      border-radius: 50%;
-    }
-    & * {
+    .square {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 23em;
-      height: 23em;
-      &::before,
-      &::after {
-        content: "";
-        width: calc(12em * 1.732 - 1em);
-        height: calc(12em * 1.732 - 1em);
+      --size: 32em;
+      font-size: 0.8em;
+      width: var(--size);
+      height: var(--size);
+      background-color: transparent;
+      box-sizing: border-box;
+      &-front,
+      &-back {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: transparent;
+        border: calc(var(--size) / 20) solid var(--wood-color);
+        box-shadow: 0 0 1rem #0007 inset;
+        &::after {
+          top: calc(var(--size) / -20);
+          left: calc(var(--size) / -20);
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          border: calc(var(--size) / 20) solid transparent;
+          border-image: url("~@public/wood.png") 30;
+        }
       }
-      &::before {
-        transform: translateZ(6em);
+      &-front {
+        transform: translateZ(calc(var(--size) / 20));
       }
-      &::after {
-        transform: translateZ(-6em);
+      &-back {
+        transform: translateZ(calc(var(--size) / -20));
+      }
+      &-top,
+      &-bottom,
+      &-left,
+      &-right {
+        width: 100%;
+        height: calc(var(--size) / 10);
+        background-color: transparent;
+        &::before,
+        &::after {
+          content: "";
+          background-color: var(--wood-color);
+          background-image: url("~@public/wood.png");
+          box-shadow: 0 0 1rem #0007 inset;
+        }
+        &::before {
+          transform: translateZ(calc(var(--size) / 20));
+        }
+      }
+      &-top {
+        top: 0;
+        left: 0;
+        transform: rotateX(90deg);
+      }
+      &-bottom {
+        bottom: 0;
+        left: 0;
+        transform: rotateX(-90deg);
+      }
+      &-left {
+        left: 0;
+        height: 100%;
+        width: calc(var(--size) / 10);
+        transform: rotateY(-90deg);
+      }
+      &-right {
+        right: 0;
+        height: 100%;
+        width: calc(var(--size) / 10);
+        transform: rotateY(90deg);
+      }
+      .circle {
+        --size: 24em;
       }
     }
-    &-ud {
-      transform: rotateX(90deg);
+    .squareBox {
+      bottom: 0;
+      transform: translate(-50%, -35%) rotateZ(45deg);
     }
-    &-lr {
-      transform: rotateY(90deg);
+    .square-1 {
+      animation: squareRoll-1 30s linear reverse infinite;
+    }
+    .square-2 {
+      animation: squareRoll-2 15s linear infinite;
+    }
+    .square-3 {
+      animation: squareRoll-1 7.5s linear infinite;
+    }
+    .square-4 {
+      animation: squareRoll-2 3.75s linear reverse infinite;
     }
   }
-}
 
-@keyframes roll {
-  to {
-    transform: rotateY(360deg);
+  @keyframes roll {
+    to {
+      transform: rotateY(360deg);
+    }
   }
-}
 
-@keyframes squareRoll-1 {
-  from {
-    transform: rotate3d(-1, 1, 0, 90deg);
+  @keyframes squareRoll-1 {
+    from {
+      transform: rotate3d(-1, 1, 0, 90deg);
+    }
+    to {
+      transform: rotate3d(-1, 1, 0, 450deg);
+    }
   }
-  to {
-    transform: rotate3d(-1, 1, 0, 450deg);
-  }
-}
 
-@keyframes squareRoll-2 {
-  from {
-    transform: rotate3d(1, 1, 0, 90deg);
-  }
-  to {
-    transform: rotate3d(1, 1, 0, 450deg);
-  }
-}
-
-@keyframes ballRoll {
-  from {
-    transform: rotate3d(1, 1, 1, 0deg);
-  }
-  to {
-    transform: rotate3d(1, 1, 1, 360deg);
+  @keyframes squareRoll-2 {
+    from {
+      transform: rotate3d(1, 1, 0, 90deg);
+    }
+    to {
+      transform: rotate3d(1, 1, 0, 450deg);
+    }
   }
 }
