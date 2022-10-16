@@ -9,12 +9,17 @@
   overflow: hidden;
   width: 100%;
   height: 16rem;
-  transition: box-shadow .5s;
+  transition: box-shadow 0.5s;
   &:nth-child(even) {
-    --linear-image: linear-gradient(to top right, var(--theme-color-level-2), var(--theme-color-level-3), var(--theme-color-level-4));
-    --clip-path: polygon(0 0,100% 0,100% 100%,0 92%);
+    --linear-image: linear-gradient(
+      to top right,
+      var(--theme-color-level-2),
+      var(--theme-color-level-3),
+      var(--theme-color-level-4)
+    );
+    --clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
     .info {
-      .footer{
+      .footer {
         left: 0;
         flex-direction: row-reverse;
         padding: 0 1.5rem 0 0;
@@ -26,7 +31,7 @@
     }
     @media (min-width: 661px) {
       flex-direction: row-reverse;
-      --clip-path: polygon(0 0,100% 0,100% 100%,8% 100%);
+      --clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);
       .info {
         padding: 1rem 0 3rem 1.5rem;
         .footer {
@@ -36,8 +41,13 @@
     }
   }
   &:nth-child(odd) {
-    --linear-image: linear-gradient(to top left, var(--theme-color-level-2), var(--theme-color-level-3), var(--theme-color-level-4));
-    --clip-path: polygon(0 0,100% 0,100% 92%,0 100%);
+    --linear-image: linear-gradient(
+      to top left,
+      var(--theme-color-level-2),
+      var(--theme-color-level-3),
+      var(--theme-color-level-4)
+    );
+    --clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
     .info {
       .footer {
         right: 0;
@@ -48,7 +58,7 @@
       }
     }
     @media (min-width: 661px) {
-      --clip-path: polygon(0 0,92% 0,100% 100%,0 100%);
+      --clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
       .info {
         padding: 1rem 1.5rem 3rem 0;
         .footer {
@@ -64,7 +74,7 @@
     -webkit-clip-path: var(--clip-path);
     clip-path: var(--clip-path);
     img {
-      transition: transform .5s;
+      transition: transform 0.5s;
     }
   }
   .info {
@@ -89,7 +99,7 @@
       .divider {
         width: 0;
         text-align: center;
-        transition: width .5s;
+        transition: width 0.5s;
       }
     }
     &-content {
@@ -114,20 +124,41 @@
         height: 100%;
         vertical-align: middle;
         .tag {
+          width: max-content;
+          position: relative;
           margin: 0 0.2rem;
-          border: 1px solid var(--theme-color-level-3);
+          border: 1.5px solid var(--theme-color-level-3);
           border-radius: 1rem;
-          line-height: 100%;
-          padding: 0.2rem 0.4rem;
-          font-size: 1rem;
+          line-height: 1.6rem;
+          padding: 0.1rem 0.4rem;
+          box-sizing: border-box;
+          font-size: 1.2rem;
           word-break: keep-all;
-          background-image: var(--linear-image);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          transition: transform .5s;
+          // background-image: var(--linear-image);
+          // background-clip: text;
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          background-color: transparent;
+          transform: perspective(1px) translateZ(0);
+          color: var(--theme-color-level-3);
+          &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            content: "";
+            border-radius: 1rem;
+            transform: scale(0);
+            background: var(--linear-image);
+            transition: transform 0.5s ease-out;
+            z-index: -1;
+          }
           &:hover {
-            transform: scale(1.05);
+            color: var(--bg-color);
+            &::before {
+              transform: scale(1);
+            }
           }
         }
       }
@@ -144,12 +175,12 @@
   }
   &:hover {
     box-shadow: 0.5rem 0.5rem 2rem -1rem var(--bg-reverse-color),
-    -0.5rem -0.5rem 2rem -1rem var(--bg-reverse-color);
-    .cover>img {
+      -0.5rem -0.5rem 2rem -1rem var(--bg-reverse-color);
+    .cover > img {
       transform: scale(1.1) rotate(3deg);
     }
     .info {
-      &-title>.divider {
+      &-title > .divider {
         width: 100%;
       }
     }
@@ -167,5 +198,4 @@
       padding: 0 1.5rem 3rem;
     }
   }
-  
 }

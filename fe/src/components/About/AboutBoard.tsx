@@ -1,33 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DecorativeArticle from "./DecorativeArticle";
 import DecorativeBall from "./DecorativeBall";
 import "@/assets/CSS/About/aboutBoard.scss";
+import info from "@/constants/introduction";
 function AboutBoard() {
   const [showInfo, setShowInfo] = useState(false);
-  // function setTextAnimation(
-  //   delay,
-  //   duration,
-  //   strokeWidth,
-  //   timingFunction,
-  //   strokeColor,
-  //   repeat
-  // ) {
-  //   let paths = document.querySelectorAll("path");
-  //   let mode = repeat ? "infinite" : "forwards";
-  //   for (let i = 0; i < paths.length; i++) {
-  //     const path = paths[i];
-  //     const length = path.getTotalLength();
-  //     path.style["stroke-dashoffset"] = `${length}px`;
-  //     path.style["stroke-dasharray"] = `${length}px`;
-  //     path.style["stroke-width"] = `${strokeWidth}px`;
-  //     path.style["stroke"] = `${strokeColor}`;
-  //     path.style[
-  //       "animation"
-  //     ] = `${duration}s svg-text-anim ${mode} ${timingFunction}`;
-  //     path.style["animation-delay"] = `${i * delay}s`;
-  //   }
-  // }
-  // setTextAnimation(0.1, 2.7, 2, "linear", "#ffffff", false);
+  //svg text 动画
+  const gRef = useRef(null);
+  useEffect(() => {
+    let arr: SVGGeometryElement[] = (gRef.current as unknown as HTMLElement)
+      .childNodes as unknown as SVGGeometryElement[];
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].style.strokeDashoffset = arr[i].getTotalLength() + "px";
+      arr[i].style.strokeDasharray = arr[i].getTotalLength() + "px";
+      arr[i].style.strokeWidth = "0.05rem";
+      arr[i].style.stroke = "var(--theme-color-level-4)";
+      arr[i].style.animation = "5s svg-text-anim linear backwards infinite";
+      arr[i].style.animationDelay = `${i * 0.1 + 3}s`;
+    }
+  });
+  //span text 动画
+  const infoTxt1 = info.me.split("").map((x, i) => (
+    <span
+      className="info"
+      style={{ transitionDelay: (i * 0.1 + 2) + "s" }}
+      key={i}
+    >
+      {x}
+    </span>
+  ));
+  const infoTxt2 = info.welcome.split("").map((x, i) => (
+    <span
+      className="info"
+      style={{ transitionDelay: (i * 0.1 + 5) + "s" }}
+      key={i}
+    >
+      {x}
+    </span>
+  ));
   return (
     <label htmlFor="infoControl">
       <div className="aboutBoard" data-component="AboutBoard">
@@ -37,10 +47,12 @@ function AboutBoard() {
           checked={showInfo}
           id="infoControl"
           onChange={() => setShowInfo(!showInfo)}
+          
         />
         <div className="infoCard">
           <div className="bgBox">
             <div className="text">
+              {infoTxt1}
               <svg
                 width="444"
                 height="112"
@@ -56,6 +68,7 @@ function AboutBoard() {
                   stroke="#000"
                   strokeWidth="0.25mm"
                   fill="none"
+                  ref={gRef}
                 >
                   <path
                     d="M 87.681 69.6 L 86.401 69.92 Q 85.121 69.92 90.561 65.44 L 99.521 58.08 Q 105.281 53.28 109.441 49.12 Q 113.601 44.96 116.321 41.6 A 23.074 23.074 0 0 0 109.276 27.697 A 30.339 30.339 0 0 0 107.681 26.24 A 39.883 39.883 0 0 0 95.723 19.093 A 47.737 47.737 0 0 0 92.321 17.92 Q 88.943 17.076 82.292 16.686 A 172.837 172.837 0 0 0 77.601 16.48 Q 69.694 16.182 69.159 15.745 A 0.087 0.087 0 0 1 69.121 15.68 Q 69.121 15.52 69.441 15.2 A 51.798 51.798 0 0 1 77.922 13.228 A 42.186 42.186 0 0 1 83.841 12.8 Q 87.041 12.8 90.881 13.28 Q 94.721 13.76 99.201 14.88 A 45.732 45.732 0 0 1 109.56 18.614 A 30.354 30.354 0 0 1 122.721 31.2 Q 124.321 27.36 124.321 23.36 A 18.931 18.931 0 0 0 123.549 17.842 A 15.499 15.499 0 0 0 120.561 12.32 A 21.393 21.393 0 0 0 113.833 7.038 A 27.44 27.44 0 0 0 110.481 5.6 A 38.837 38.837 0 0 0 101.6 3.625 A 48.216 48.216 0 0 0 96.481 3.36 A 76.738 76.738 0 0 0 59.372 13.119 A 98.227 98.227 0 0 0 50.081 18.88 Q 29.441 33.28 17.441 56 Q 8.641 72.48 8.641 85.6 A 30.359 30.359 0 0 0 9.8 94.37 Q 12.73 104.075 23.066 106.82 A 33.611 33.611 0 0 0 29.921 107.84 Q 31.041 108 32.161 108 L 34.401 108 Q 65.921 108 94.401 82.56 A 105.689 105.689 0 0 0 104.308 72.578 Q 115.324 59.75 116.481 47.84 A 65.578 65.578 0 0 1 110.839 53.249 Q 104.378 58.812 94.236 65.442 A 299.628 299.628 0 0 1 87.681 69.6 Z M 126.561 32.64 L 124.801 36 Q 126.081 40.32 126.081 44.8 Q 126.081 62.252 110.488 78.363 A 91.308 91.308 0 0 1 105.601 83.04 Q 74.241 111.2 35.361 111.2 L 31.841 111.2 Q 30.081 111.2 28.321 111.04 A 36.135 36.135 0 0 1 18.676 109.303 A 27.876 27.876 0 0 1 7.841 102.72 A 25.452 25.452 0 0 1 0.728 89.333 A 37.44 37.44 0 0 1 0.001 81.76 Q 0.001 70.24 6.561 55.68 Q 13.272 40.838 29.561 27.245 A 141.801 141.801 0 0 1 37.921 20.8 Q 51.201 11.36 66.241 5.68 Q 81.281 0 96.641 0 A 58.183 58.183 0 0 1 106.493 0.803 A 47.464 47.464 0 0 1 113.041 2.4 Q 120.481 4.8 124.881 9.6 A 16.58 16.58 0 0 1 129.123 19.064 A 22.398 22.398 0 0 1 129.281 21.76 Q 129.281 24.32 128.641 27.12 Q 128.001 29.92 126.561 32.64 Z"
@@ -94,6 +107,8 @@ function AboutBoard() {
                   />
                 </g>
               </svg>
+              <br />
+              {infoTxt2}
             </div>
           </div>
           <div className="ball">

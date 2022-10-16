@@ -17,8 +17,17 @@
     display: none;
     &:not(:checked) + .infoCard {
       .bgBox {
-        clip-path: circle(0 at calc(100% - 5em) calc(100% - 5em));
+        clip-path: circle(0 at calc(100% - 2.5em) calc(100% - 2.5em));
         transition: clip-path 1s;
+        .info {
+          opacity: 0;
+          filter: blur(0.3rem);
+          transition: none;
+        }
+        .name {
+          opacity: 0;
+          transition: none;
+        }
       }
       .ball {
         opacity: 0;
@@ -31,8 +40,18 @@
     }
     &:checked + .infoCard {
       .bgBox {
-        clip-path: circle(200% at calc(100% - 5em) calc(100% - 5em));
+        clip-path: circle(200% at calc(100% - 2.5em) calc(100% - 2.5em));
         transition: clip-path 1s 1.5s;
+        .info {
+          opacity: 1;
+          filter: blur(0);
+          transition: opacity 0.8s cubic-bezier(0.11, 0, 0.5, 0),
+            filter 0.8s cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        .name {
+          opacity: 1;
+          transition: opacity 1s 3s cubic-bezier(0.11, 0, 0.5, 0);
+        }
       }
       .ball {
         opacity: 1;
@@ -58,6 +77,16 @@
       height: 100%;
       background-color: rgba(var(--bg-color-2), 0.4);
       backdrop-filter: blur(0.5rem);
+      padding: 2rem;
+      box-sizing: border-box;
+      font-size: 1.9rem;
+      font-family: "Alex Brush", "Ma Shan Zheng", "Consolas", "楷体";
+      color: var(--bg-reverse-color);
+      .name {
+        padding: 0 1rem;
+        width: 10rem;
+        height: 2.5rem;
+      }
     }
     .ball {
       position: absolute;
@@ -68,25 +97,19 @@
         --shadow-size: 2em;
       }
     }
-    .name {
-      padding: 2rem;
-      width: 8rem;
-      height: 2rem;
-    }
     @keyframes svg-text-anim {
-       40% {
-          stroke-dashoffset: 0;
-          fill: transparent;
-        }
-        60% {
-          stroke-dashoffset: 0;
-          fill: #6a92f1;
-        }
-        100% {
-          stroke-dashoffset: 0;
-          fill: #6a92f1;
-        }
-        
+      40% {
+        stroke-dashoffset: 0;
+        fill: transparent;
+      }
+      60% {
+        stroke-dashoffset: 0;
+        fill: var(--theme-color-level-4);
+      }
+      100% {
+        stroke-dashoffset: 0;
+        fill: var(--theme-color-level-4);
+      }
     }
   }
 }
