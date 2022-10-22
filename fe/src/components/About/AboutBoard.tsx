@@ -18,6 +18,7 @@ function AboutBoard() {
       arr[i].style.animation = "5s svg-text-anim linear backwards infinite";
       arr[i].style.animationDelay = `${i * 0.1 + 3}s`;
     }
+    setTimeout(()=>setShowInfo(true),3000);
   });
   //span text 动画
   const infoTxt1 = info.me.split("").map((x, i) => (
