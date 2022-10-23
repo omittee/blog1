@@ -33,7 +33,6 @@
   }
 }
 a {
-  display: block;
   text-decoration: none;
   color: var(--bg-reverse-color);
 
@@ -61,6 +60,8 @@ img {
   --bg-color: black;
   --bg-color-2: 0, 0, 0;
   --bg-reverse-color: white;
+  --bg-reverse-color-2: 255, 255, 255;
+  --text-color: #ccc;
   --about-bg-linear: linear-gradient(
       -173deg,
       rgba(255, 255, 255, 0.2) 0%,
@@ -90,6 +91,8 @@ img {
   --bg-color: white;
   --bg-color-2: 255, 255, 255;
   --bg-reverse-color: black;
+  --bg-reverse-color-2: 0, 0, 0;
+  --text-color: #333;
   --about-bg-linear: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%),
     radial-gradient(
       at top left,

@@ -1,15 +1,20 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-// 设置高亮样式
-
+import Markdown from "react-markdown";
 import str from "@/constants/md";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus, coy } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm"
+import remarkToc from "remark-toc"
+import "@/assets/CSS/mdStyle.scss"
+// // 设置高亮样式
+
 function ArticleContainer() {
   return (
     <div data-component="ArticleContainer">
-      <ReactMarkdown
+      <Markdown
         className="md"
-        children={str}
+        rehypePlugins={[remarkMath, remarkGfm, remarkToc]}
         components={{
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
@@ -18,7 +23,9 @@ function ArticleContainer() {
                 language={match[1]}
                 PreTag="div"
                 children={String(children).replace(/\n$/, "")}
-                useInlineStyles={false}
+                style={vscDarkPlus}
+                useInlineStyles={true}
+                showInlineLineNumbers
                 {...props}
               />
             ) : (
@@ -28,7 +35,9 @@ function ArticleContainer() {
             );
           },
         }}
-      ></ReactMarkdown>
+      >
+        {str}
+      </Markdown>
     </div>
   );
 }
