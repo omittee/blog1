@@ -109,7 +109,9 @@
       height: 0.15rem;
     }
     a {
-      padding: 0 0.3rem;
+      display: inline-block;
+      max-width: fit-content;
+      margin: 0 0.3rem;
       color: transparent;
       background: linear-gradient(
         to top left,
@@ -118,8 +120,9 @@
         var(--theme-color-level-4)
       );
       background-clip: text;
+      word-break: break-all;
       &:hover {
-        text-decoration: underline;
+        text-decoration: underline var(--theme-color-level-3);
       }
     }
     blockquote {
@@ -184,6 +187,12 @@
             }
           }
         }
+      }
+    }
+    .footnotes {
+      a {
+        font-size: 1.5rem;
+        text-decoration: none;
       }
     }
   }

@@ -2,11 +2,14 @@ import React from "react";
 import Markdown from "react-markdown";
 import str from "@/constants/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus, coy } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {
+  vscDarkPlus,
+  coy,
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkMath from "remark-math";
-import remarkGfm from "remark-gfm"
-import remarkToc from "remark-toc"
-import "@/assets/CSS/mdStyle.scss"
+import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
+import "@/assets/CSS/mdStyle.scss";
 // // 设置高亮样式
 
 function ArticleContainer() {
@@ -23,6 +26,7 @@ function ArticleContainer() {
                 language={match[1]}
                 PreTag="div"
                 children={String(children).replace(/\n$/, "")}
+                // @ts-ignore 忽略SyntaxHighlighter style类型不匹配的错误
                 style={vscDarkPlus}
                 useInlineStyles={true}
                 showInlineLineNumbers
