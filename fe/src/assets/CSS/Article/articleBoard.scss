@@ -1,10 +1,11 @@
 .articleBoard[data-component="ArticleBoard"] {
   display: flex;
   justify-content: space-around;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   background-color: var(--bg-color);
-  padding: 0 1rem;
+  padding: 4rem 1rem 0;
   box-sizing: border-box;
   scroll-snap-align: start;
+  overflow: scroll;
 }

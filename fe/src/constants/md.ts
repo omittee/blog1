@@ -20,7 +20,11 @@ aaA段落空行
 2. 这是第二步
 3. 这是第三步
 
-[百度dddddddddddddddddddddddddddddddddddddddd](https://www.baidu.com/)
+* aaa
+  * bbb
+* ccc
+
+[百度ddddddddddddddddddddddddd哈哈哈](https://www.baidu.com/)
 > Markdown 是最好的写作语法 —— 鲁迅
 
 > 这是一个引用
@@ -35,7 +39,7 @@ aaA段落空行
 
 JavaScript 中声明常量的方式是 \`const PI = 3.14\` 。
 
-\`\`\`javascript
+\`\`\`js
 import a from "b"
 
 import java.io.FileInputStream;
@@ -73,9 +77,12 @@ span {
 这是 *一段斜体文本*
 这是 ***粗体加斜体***
 # 如果没有使用反斜线，本行文本将会是一个一级标题
-平方米的表示方法：m^2^
-氧气表示方法：O~2~
+$
+L = frac{1}{2} rho v^2 S C_L
+$
 $E=mc^2$
 $$E=mc^2$$
 `;
 export default str;
+
+

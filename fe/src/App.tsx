@@ -5,7 +5,7 @@ import "@/assets/CSS/app.scss"
 
 function App() {
   return (
-    <div className="app">
+    <div className="app hideScrollBar">
       <AboutBoard></AboutBoard>
       <ArticleBoard></ArticleBoard>
     </div>

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
   // firefox
   scrollbar-width: thin;
   scrollbar-color: var(--theme-color-level-3) transparent;
@@ -86,6 +87,7 @@ img {
   --theme-color-level-4: #e1453c;
   --rgb-theme-color: 225, 69, 60;
   --wood-color: #3e2723;
+  --code-block-bar-color: #555;
 }
 :root {
   --bg-color: white;
@@ -113,6 +115,8 @@ img {
   --theme-color-level-4: #1c73ff;
   --rgb-theme-color: 28, 115, 255;
   --wood-color: #3e2723;
+  --code-block-bar-color: #ddd;
+  
 }
 
 .title-ellipsis {

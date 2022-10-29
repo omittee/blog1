@@ -40,9 +40,9 @@ function ArticleCard(props: Props) {
                 .trim()
                 .split(" ")
                 .map((x, i) => (
-                  <span className="tag" key={i}>
+                  <a className="tag ic i-tag" key={i} href={"javascript:;"}>
                     {x}
-                  </span>
+                  </a>
                 ))}
             </div>
             <div className="lastModified">{props.article.lastModified}</div>
