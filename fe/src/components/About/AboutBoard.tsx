@@ -47,6 +47,7 @@ function AboutBoard() {
           type="checkbox"
           checked={showInfo}
           id="infoControl"
+          className="hide"
           onChange={() => setShowInfo(!showInfo)}
         />
         <div className="infoCard">

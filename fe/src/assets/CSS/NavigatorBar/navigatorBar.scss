@@ -1,0 +1,138 @@
+.navigator[data-component="navigator"] {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  background-color: rgba(var(--bg-color-2), 0.4);
+  backdrop-filter: blur(0.5rem);
+  z-index: 999;
+  .theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 5rem;
+    height: 3rem;
+    .switch {
+      --linear: linear-gradient(
+        to top left,
+        var(--theme-color-level-2),
+        var(--theme-color-level-3),
+        var(--theme-color-level-4)
+      );
+      position: relative;
+      width: 70%;
+      height: 70%;
+      border: 0.25rem solid #999;
+      border-radius: 2.1rem;
+      background: var(--linear);
+      .pattern {
+        position: absolute;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.1rem;
+        height: 2.1rem;
+        border-radius: 50%;
+        background-color: var(--bg-color);
+        transition: all 0.2s ease-in-out;
+        .moon {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.2s ease-in-out;
+          &::before {
+            content: "";
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: var(--linear);
+            transition: all 0.2s ease-in-out;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 1.05rem;
+            height: 1.05rem;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+        .sun {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transform: scale(0) rotate(0);
+          transition: all 0.2s ease-in-out;
+          &::after {
+            content: "";
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-image: var(--linear);
+            border: 0.15rem solid var(--bg-color);
+            z-index: 2;
+            transition: all 0.2s ease-in-out;
+          }
+          .sunshine {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0.2rem;
+            height: 1.7rem;
+            background-color: var(--theme-color-level-4);
+            border-radius: 0.1rem;
+            transition: all 0.2s ease-in-out;
+            &::before,
+            &::after {
+              position: absolute;
+              content: "";
+              display: block;
+              width: 100%;
+              height: 100%;
+              border-radius: 0.1rem;
+              background-color: var(--theme-color-level-4);
+              transition: all 0.2s ease-in-out;
+            }
+            &::before {
+              transform: rotate(60deg);
+            }
+            &::after {
+              transform: rotate(-60deg);
+            }
+          }
+        }
+      }
+    }
+    #themeControl:checked + .switch {
+      .pattern {
+        left: 1.45rem;
+        .moon {
+          opacity: 0;
+        }
+        .sun {
+          opacity: 1;
+          transform: scale(1) rotate(120deg);
+        }
+      }
+    }
+  }
+}

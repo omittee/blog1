@@ -14,7 +14,6 @@
   perspective-origin: center 0%;
   transform: scale(1);
   #infoControl {
-    display: none;
     &:not(:checked) + .infoCard {
       .bgBox {
         clip-path: circle(0 at calc(100% - 2.5em) calc(100% - 2.5em));

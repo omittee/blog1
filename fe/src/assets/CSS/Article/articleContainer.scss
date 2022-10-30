@@ -77,7 +77,7 @@
     td,
     th {
       font-size: 1.2rem;
-      line-height: 1.7;
+      line-height: 1.5;
     }
     hr,
     img,
@@ -167,8 +167,6 @@
       padding: 0rem 0.3rem;
       font-size: 1rem;
       font-weight: bold;
-      // background-color: rgba(var(--bg-reverse-color-2), 0.1);
-      background-color: var(--bg-color);
     }
     pre {
       code {
@@ -180,6 +178,9 @@
         border-radius: 1rem;
         overflow: hidden;
         background-color: var(--code-block-bar-color);
+        span {
+          line-height: 1.2;
+        }
         .bar {
           display: flex;
           justify-content: space-between;

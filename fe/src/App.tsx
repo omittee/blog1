@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import AboutBoard from "./components/About/AboutBoard";
 import ArticleBoard from "./components/Article/ArticleBoard";
-import "@/assets/CSS/app.scss"
-
+import { ThemeContext } from "@/GlobalContext/globalContext";
+import "@/assets/CSS/app.scss";
 function App() {
+  const [isDarkTheme, setTheme] = useState(false)
   return (
-    <div className="app hideScrollBar">
-      <AboutBoard></AboutBoard>
-      <ArticleBoard></ArticleBoard>
-    </div>
+    <ThemeContext.Provider value={{
+      isDarkTheme,
+      toggleTheme: ()=>{
+        setTheme((pre)=>{
+          return !pre
+        })
+      }
+    }}>
+      <div
+        className="app hideScrollBar"
+        data-theme={isDarkTheme ? "dark" : "light"}
+      >
+        <AboutBoard></AboutBoard>
+        <ArticleBoard></ArticleBoard>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

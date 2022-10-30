@@ -40,7 +40,7 @@ function ArticleCard(props: Props) {
                 .trim()
                 .split(" ")
                 .map((x, i) => (
-                  <a className="tag ic i-tag" key={i} href={"javascript:;"}>
+                  <a className="tag ic i-tag" key={i} href={"#"}>
                     {x}
                   </a>
                 ))}

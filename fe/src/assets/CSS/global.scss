@@ -57,7 +57,7 @@ img {
 
 //theme
 
-[data-theme="dark"]:root {
+[data-theme="dark"] {
   --bg-color: black;
   --bg-color-2: 0, 0, 0;
   --bg-reverse-color: white;
@@ -144,4 +144,7 @@ img {
     var(--theme-color-level-3),
     transparent
   );
+}
+.hide {
+  display: none;
 }
