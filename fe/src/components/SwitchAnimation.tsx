@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { SwitchContext } from "@/GlobalContext/globalContext";
 import "@/assets/CSS/switchAnimation.scss";
 function SwitchAnimation() {
