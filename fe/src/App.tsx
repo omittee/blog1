@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import AboutBoard from "./components/About/AboutBoard";
 import ArticleBoard from "./components/Article/ArticleBoard";
-import { ThemeContext } from "@/GlobalContext/globalContext";
+import { ThemeContext, SwitchContext } from "@/GlobalContext/globalContext";
 import "@/assets/CSS/app.scss";
+import SwitchAnimation from "./components/SwitchAnimation";
 function App() {
-  const [isDarkTheme, setTheme] = useState(false)
+  const [isDarkTheme, setTheme] = useState(false);
+  const [showSwitch, setSwitch] = useState(false);
   return (
-    <ThemeContext.Provider value={{
-      isDarkTheme,
-      toggleTheme: ()=>{
-        setTheme((pre)=>{
-          return !pre
-        })
+    <SwitchContext.Provider value={{
+      showSwitch,
+      toggleSwitch(){
+        setSwitch(true);
+        setTimeout(()=>setSwitch(false), 2000);
       }
     }}>
-      <div
-        className="app hideScrollBar"
-        data-theme={isDarkTheme ? "dark" : "light"}
+      <ThemeContext.Provider
+        value={{
+          isDarkTheme,
+          toggleTheme: () => {
+            setTheme((pre) => {
+              return !pre;
+            });
+          },
+        }}
       >
-        <AboutBoard></AboutBoard>
-        <ArticleBoard></ArticleBoard>
-      </div>
-    </ThemeContext.Provider>
+        <div
+          className="app hideScrollBar"
+          data-theme={isDarkTheme ? "dark" : "light"}
+        >
+          <AboutBoard></AboutBoard>
+          <ArticleBoard></ArticleBoard>
+          <SwitchAnimation></SwitchAnimation>
+        </div>
+      </ThemeContext.Provider>
+    </SwitchContext.Provider>
   );
 }
 

@@ -1,11 +1,18 @@
 [data-component="ArticleContainer"] {
+  margin: 0 30% 0 10%;
+  max-width: 100%;
+  @media (max-width: 1000px) {
+    margin: 0 10%;
+  }
   .md {
+    position: relative;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
     padding: 2rem;
     color: var(--text-color);
     background: var(--card-bg-linear);
+    max-width: 100%;
     h1 {
       position: relative;
       &::before {
@@ -60,8 +67,7 @@
       }
     }
     h1,
-    h2,
-    h3 {
+    h2 {
       display: flex;
       justify-content: space-between;
       &:hover:after {
@@ -110,6 +116,12 @@
         &::marker {
           color: var(--theme-color-level-4);
           font-size: 1.2rem;
+        }
+      }
+      ol {
+        list-style-type: lower-alpha;
+        ol {
+          list-style-type: lower-roman;
         }
       }
     }
@@ -216,17 +228,29 @@
       width: 50%;
     }
     .toc {
+      position: sticky;
+      top: 5rem;
+      left: 100%;
+      width: 50%;
+      height: 0;
+      transform: translateX(112%);
+      @media (max-width: 1000px) {
+        position: static;
+        width: auto;
+        transform: none;
+        height: auto;
+      }
       ol {
         list-style-type: disc;
         li {
           &::marker {
-          color: var(--theme-color-level-4);
-          font-size: 1.5rem;
-        }
+            color: var(--theme-color-level-4);
+            font-size: 1.5rem;
+          }
         }
         ol {
           list-style-type: circle;
-          ol{
+          ol {
             list-style-type: square;
           }
         }

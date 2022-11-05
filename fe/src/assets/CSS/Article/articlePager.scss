@@ -1,0 +1,38 @@
+[data-component="articlePager"] {
+  width: 100%;
+  --linear-image: linear-gradient(
+    to top left,
+    var(--theme-color-level-2),
+    var(--theme-color-level-3),
+    var(--theme-color-level-4)
+  );
+  .pages {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20rem;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+    .pre,
+    .next,
+    .page {
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      line-height: 2rem;
+      border-radius: 50%;
+      background: var(--card-bg-linear);
+      color: var(--text-color);
+    }
+    .hide {
+      display: none;
+    }
+    .page:hover,
+    .pre:not(.disable):hover,
+    .next:not(.disable):hover,
+    .active {
+      background: var(--linear-image);
+      color: var(--bg-color);
+    }
+  }
+}

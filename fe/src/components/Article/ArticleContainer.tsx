@@ -26,7 +26,7 @@ function ArticleContainer() {
                 [
                   rehypeToc,
                   {
-                    headings: ["h1", "h2", "h3"],
+                    headings: ["h1", "h2"],
                     position: "afterend",
                     customizeTOCItem(tocItem: any, headings: any) {
                       tocItem.children[0].properties.href +=
@@ -99,7 +99,7 @@ function ArticleContainer() {
                   return (
                     <a href={href}>
                       {children}
-                      <i className="ic i-link-circle"></i>
+                      <i className="ic i-link"></i>
                     </a>
                   );
                 },

@@ -1,8 +1,17 @@
-.articleList[data-component="ArticleList"] {
+[data-component="ArticleList"] {
   // display: flex;
   // justify-content: center;
   // align-items: center;
   // flex-direction: column;
-  background-color: var(--bg-color);
-  background-blend-mode: normal,color-burn;
+  .list {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;
+    .articleList {
+      max-width: 100%;
+      background-color: var(--bg-color);
+      background-blend-mode: normal, color-burn;
+    }
+  }
+  
 }

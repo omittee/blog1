@@ -1,13 +1,21 @@
-import React from 'react';
-import ArticleCard from './ArticleCard';
-import data from "@/constants/data"
+import React from "react";
+import ArticleNav from "./ArticleNav";
+import ArticleCard from "./ArticleCard";
+import ArticlePager from "./ArticlePager";
+import data from "@/constants/data";
 import "@/assets/CSS/Article/articleList.scss";
 function ArticleList() {
-  const listItem = data.map((x, index)=><ArticleCard article={x} index={index} key={x.id}></ArticleCard>)
+  const listItem = data.map((x, index) => (
+    <ArticleCard article={x} index={index} key={x.id}></ArticleCard>
+  ));
   return (
-    <div className="articleList" data-component="ArticleList">
-      {listItem}
+    <div data-component="ArticleList">
+      <div className="list">
+        <div className="articleList">{listItem}</div>
+        <ArticleNav></ArticleNav>
+      </div>
+      <ArticlePager pageNum={10}></ArticlePager>
     </div>
   );
 }
-export default ArticleList
+export default ArticleList;

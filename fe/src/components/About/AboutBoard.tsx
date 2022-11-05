@@ -41,7 +41,7 @@ function AboutBoard() {
   ));
   return (
     <label htmlFor="infoControl">
-      <div className="aboutBoard" data-component="AboutBoard">
+      <div className="aboutBoard" id="about" data-component="AboutBoard">
         <DecorativeArticle></DecorativeArticle>
         <input
           type="checkbox"

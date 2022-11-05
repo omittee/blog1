@@ -1,5 +1,4 @@
 import React from "react";
-import ArticleNav from "./ArticleNav";
 import { Outlet, Route, Routes, Navigate } from "react-router-dom";
 import ArticleList from "./ArticleList";
 import ArticleContainer from "./ArticleContainer";
@@ -17,7 +16,6 @@ function ArticleBoard() {
         </Routes>
 
         <Outlet></Outlet>
-        <ArticleNav></ArticleNav>
       </div>
     </div>
   );
