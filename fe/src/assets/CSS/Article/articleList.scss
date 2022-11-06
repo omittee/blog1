@@ -7,11 +7,25 @@
     display: flex;
     gap: 1.5rem;
     justify-content: space-around;
+    height: 100%;
     .articleList {
-      max-width: 100%;
-      background-color: var(--bg-color);
+      width: 100%;
+      background-color: transparent;
       background-blend-mode: normal, color-burn;
+      .emptyBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        height: 85vh;
+        color: var(--text-color);
+        .circle {
+          --size: 10em;
+          --shadow-size: 2em;
+        }
+      }
     }
   }
-  
 }

@@ -13,7 +13,6 @@ function SwitchAnimation() {
           scale = 1;
         } 
         if (logoRef.current) {
-          console.log(1);
           (
             logoRef.current as unknown as HTMLElement
           ).style.transform = `scale(${scale})`;
