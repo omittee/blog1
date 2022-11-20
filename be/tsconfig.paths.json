@@ -1,0 +1,11 @@
+//设置路径别名
+{
+  "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+          "@/*": ["./src/*"],
+          "@public": ["./public/*"],
+          "@fe/*": ["../fe/src/*"]
+      }
+  }
+}

@@ -5,18 +5,11 @@ import ArticlePager from "./ArticlePager";
 import DecorativeBall from "../About/DecorativeBall";
 import data from "@/constants/data";
 import "@/assets/CSS/Article/articleList.scss";
-
-interface dataType {
-  id: string;
-  title: string;
-  tags: string;
-  content: string;
-  lastModified: string;
-}
+import { dataType } from "@/shared/types";
 function ArticleList() {
   const listItem = data.length ? (
     data.map((x: dataType, index) => (
-      <ArticleCard article={x} index={index} key={x.id}></ArticleCard>
+      <ArticleCard article={x} index={index} key={x._id}></ArticleCard>
     ))
   ) : (
     <div className="emptyBox">
