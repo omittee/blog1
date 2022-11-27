@@ -4,8 +4,6 @@ import json from 'koa-json'
 import logger from 'koa-logger'
 import body, { HttpMethodEnum } from 'koa-body'
 import { connectDB } from './config/mongo'
-// import koaJwt from 'koa-jwt'
-// import { secret } from './server/config/jwt'
 // import auth from './server/routes/auth'
 import api from './routes/api'
 connectDB();

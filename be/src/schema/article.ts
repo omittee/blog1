@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 const articleSchema = new Schema({
   _id: {
     type: String,
@@ -21,5 +21,5 @@ const articleSchema = new Schema({
     required: true
   }
 }, { _id: false })
-const Article = mongoose.model('article', articleSchema)
+const Article = model('article', articleSchema)
 export default Article 

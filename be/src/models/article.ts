@@ -1,12 +1,35 @@
 import Article from "../schema/article";
 import { dataType } from "@fe/shared/types"
-const queryArticleByPageNum = async (page: number, pageSize: number) => {
-  return await Article.find({}).skip(page * pageSize).limit(pageSize).catch(e => console.log(e));
+const queryArticle = async (page: number, pageSize: number, regStr: string) => {
+  const reg = new RegExp(regStr, "i");
+  return await Article.find({
+    $or: [{
+      title: reg
+    }, {
+      tags: reg
+    }, {
+      content: reg
+    }],
+  }).skip(page * pageSize).limit(pageSize).catch(e => console.log(e));
 }
 
 const queryArticleNum = async () => {
   return await Article.count().catch(e => console.log(e));
 }
+
+const queryTagsInfo = async () => {
+  const tagMap: Map<string, number> = new Map();
+  const data = await Article.find({}).catch(e => console.log(e));
+  if (data) {
+    data.forEach(x => {
+      x.tags.trim().split(" ").forEach(t => {
+        tagMap.set(t, (tagMap.get(t) ?? 0) + 1);
+      })
+    })
+  }
+  return [...tagMap.entries()];
+}
+
 
 const createOrUpdate = async (info: dataType) => {
   return await Article.findOne({ _id: info._id }).then((res) => {
@@ -25,13 +48,17 @@ const createOrUpdate = async (info: dataType) => {
   }, (e) => console.log(e))
 }
 
-const deleteArticle = async (_id: string) => {
+const deleteArticle = async (_id: string): Promise<boolean> => {
+  const res = await Article.findOne({ _id })
+  if (!res) return false;
   Article.deleteOne({ _id }).catch(e => console.log(e));
+  return true;
 }
 
 export default {
-  queryArticleByPageNum,
+  queryArticle,
   queryArticleNum,
+  queryTagsInfo,
   createOrUpdate,
   deleteArticle,
 }
