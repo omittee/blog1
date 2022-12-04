@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import Koa from 'koa'
 import Router from 'koa-router'
 import json from 'koa-json'
@@ -43,12 +45,12 @@ app.on('error', function (err) {
 });
 
 // r.use('/auth', auth.routes());
-r.use('/api', api.routes());
+r.use(api.routes());
 
 app.use(r.routes())
 app.use(r.allowedMethods())
-app.listen(3000, () => {
-  console.log('Koa is listening in 3000');
+app.listen(3060, () => {
+  console.log('Koa is listening in 3060');
 });
 
 export default app
