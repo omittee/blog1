@@ -1,12 +1,26 @@
 import React, { useState } from "react";
+import LoginModel from "../Model/LoginModel";
 import "@/assets/CSS/NavigatorBar/navigatorBar.scss";
 import { ThemeContext } from "@/GlobalContext/globalContext";
 function NavigatorBar() {
   const [searchValue, setSearchValue] = useState("");
+  const [isShow, setShow] = useState(false);
   return (
-    <nav className="navigator" data-component="navigator">
-      <a href="#about">
-        <div className="logo">
+    <>
+      <LoginModel
+        isShow={isShow}
+        setShow={() => {
+          setShow((pre) => !pre);
+        }}
+      />
+      <nav className="navigator" data-component="navigator">
+        <div
+          className="logo"
+          onClick={() => {
+            console.log("aaa");
+            setShow((pre) => !pre);
+          }}
+        >
           <svg
             width="444"
             height="112"
@@ -61,40 +75,45 @@ function NavigatorBar() {
             </g>
           </svg>
         </div>
-      </a>
 
-      <div className="searchBox">
-        <input type="search" placeholder="搜索文章" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)}/>
-        <i className="ic i-search"></i>
-      </div>
-      <label htmlFor="themeControl">
-        <div className="theme">
-          <ThemeContext.Consumer>
-            {({ isDarkTheme, toggleTheme }) => {
-              return (
-                <>
-                  <input
-                    type="checkbox"
-                    checked={isDarkTheme}
-                    id="themeControl"
-                    className="hide"
-                    onChange={toggleTheme}
-                  />
-                  <div className="switch">
-                    <div className="pattern">
-                      <div className="sun">
-                        <div className="sunshine"></div>
-                      </div>
-                      <div className="moon"></div>
-                    </div>
-                  </div>
-                </>
-              );
-            }}
-          </ThemeContext.Consumer>
+        <div className="searchBox">
+          <input
+            type="search"
+            placeholder="搜索文章"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          <i className="ic i-search"></i>
         </div>
-      </label>
-    </nav>
+        <label htmlFor="themeControl">
+          <div className="theme">
+            <ThemeContext.Consumer>
+              {({ isDarkTheme, toggleTheme }) => {
+                return (
+                  <>
+                    <input
+                      type="checkbox"
+                      checked={isDarkTheme}
+                      id="themeControl"
+                      className="hide"
+                      onChange={toggleTheme}
+                    />
+                    <div className="switch">
+                      <div className="pattern">
+                        <div className="sun">
+                          <div className="sunshine"></div>
+                        </div>
+                        <div className="moon"></div>
+                      </div>
+                    </div>
+                  </>
+                );
+              }}
+            </ThemeContext.Consumer>
+          </div>
+        </label>
+      </nav>
+    </>
   );
 }
 export default NavigatorBar;

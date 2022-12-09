@@ -1,40 +1,50 @@
 import React, { useState } from "react";
 import AboutBoard from "./components/About/AboutBoard";
 import ArticleBoard from "./components/Article/ArticleBoard";
-import { ThemeContext, SwitchContext } from "@/GlobalContext/globalContext";
+import {
+  ThemeContext,
+  SwitchContext,
+  EditContext,
+} from "@/GlobalContext/globalContext";
 import "@/assets/CSS/app.scss";
 import SwitchAnimation from "./components/SwitchAnimation";
 function App() {
   const [isDarkTheme, setTheme] = useState(false);
   const [showSwitch, setSwitch] = useState(false);
   return (
-    <SwitchContext.Provider value={{
-      showSwitch,
-      toggleSwitch(){
-        setSwitch(true);
-        setTimeout(()=>setSwitch(false), 2000);
-      }
-    }}>
-      <ThemeContext.Provider
+    <EditContext.Provider
+      value={{
+        isLogin: true,
+      }}
+    >
+      <SwitchContext.Provider
         value={{
-          isDarkTheme,
-          toggleTheme: () => {
-            setTheme((pre) => {
-              return !pre;
-            });
+          showSwitch,
+          toggleSwitch() {
+            setSwitch(true);
+            setTimeout(() => setSwitch(false), 2000);
           },
         }}
       >
-        <div
-          className="app hideScrollBar"
-          data-theme={isDarkTheme ? "dark" : "light"}
+        <ThemeContext.Provider
+          value={{
+            isDarkTheme,
+            toggleTheme: () => {
+              setTheme((pre) => !pre);
+            },
+          }}
         >
-          <AboutBoard></AboutBoard>
-          <ArticleBoard></ArticleBoard>
-          <SwitchAnimation></SwitchAnimation>
-        </div>
-      </ThemeContext.Provider>
-    </SwitchContext.Provider>
+          <div
+            className="app hideScrollBar"
+            data-theme={isDarkTheme ? "dark" : "light"}
+          >
+            <AboutBoard></AboutBoard>
+            <ArticleBoard></ArticleBoard>
+            <SwitchAnimation></SwitchAnimation>
+          </div>
+        </ThemeContext.Provider>
+      </SwitchContext.Provider>
+    </EditContext.Provider>
   );
 }
 
