@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import LoginModel from "../Model/LoginModel";
 import "@/assets/CSS/NavigatorBar/navigatorBar.scss";
 import { ThemeContext } from "@/GlobalContext/globalContext";
+import ArticleModel from "../Model/ArticleModel";
 function NavigatorBar() {
   const [searchValue, setSearchValue] = useState("");
   const [isShow, setShow] = useState(false);
+  const [isLogin, setLogin] = useState(false);
   return (
     <>
-      <LoginModel
-        isShow={isShow}
-        setShow={() => {
-          setShow((pre) => !pre);
-        }}
-      />
+      {isLogin ? (
+        <ArticleModel
+          isShow={isShow}
+          setShow={() => {
+            setShow((pre) => !pre);
+          }}
+        />
+      ) : (
+        <LoginModel
+          isShow={isShow}
+          setShow={() => {
+            setShow((pre) => !pre);
+          }}
+          setLogin={() => {
+            setLogin(true);
+          }}
+        />
+      )}
       <nav className="navigator" data-component="navigator">
         <div
           className="logo"

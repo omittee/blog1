@@ -47,6 +47,7 @@
       background-color: transparent;
       transform: perspective(1px) translateZ(0);
       color: var(--theme-color-level-3);
+      cursor: pointer;
       &::after {
         position: absolute;
         top: 0;

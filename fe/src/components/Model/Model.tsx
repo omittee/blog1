@@ -1,11 +1,8 @@
 import React, { FunctionComponent } from "react";
 import "@/assets/CSS/Model/model.scss"
-interface P {
-  isShow: boolean
-  setShow: ()=>void
-}
-const HOC = (WrappedComponent: FunctionComponent<P>) => {
-  return function (props: P) {
+import { showModelProps } from "@/shared/types";
+const HOC = (WrappedComponent: FunctionComponent<showModelProps>) => {
+  return function (props: showModelProps) {
     if(props.isShow)
       return (
         <div data-component="WrapModel">

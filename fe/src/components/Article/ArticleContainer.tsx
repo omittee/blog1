@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 import Markdown from "react-markdown";
 import str from "@/constants/md";
+import data from "@/constants/data";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
@@ -109,7 +110,7 @@ function ArticleContainer() {
               >
                 {str}
               </Markdown>
-            <Button></Button>
+            <Button data={data[0]}></Button>
             </div>
           </>
         );

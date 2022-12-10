@@ -9,3 +9,9 @@ export interface ArticleCardProps {
   article: dataType;
   index: number;
 }
+export interface showModelProps {
+  isShow: boolean
+  setShow: () => void
+  data?: dataType
+  setLogin?: ()=>void
+}

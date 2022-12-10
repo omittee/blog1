@@ -7,8 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000a;
-  z-index: 1000;
+  background-color: rgba(var(--bg-reverse-color-2), 0.3);
+  backdrop-filter: blur(0.5rem);
+  z-index: 900;
   .mask {
     position: absolute;
     top: 0;

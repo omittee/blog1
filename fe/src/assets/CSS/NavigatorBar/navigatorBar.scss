@@ -34,7 +34,9 @@
     gap: 0.3rem;
     position: relative;
     height: 2.1rem;
-    border: 0.25rem solid #999999;
+
+    box-shadow: 0rem 0rem 1.2rem -0.4rem var(--bg-reverse-color);
+    
     border-radius: 1.5rem;
     background: var(--linear);
     max-width: 50%;

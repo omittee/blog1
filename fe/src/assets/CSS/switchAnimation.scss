@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fade 0.75s 0.8s linear forwards;
+  animation: fade 0.55s 0.5s linear forwards;
   .logo {
     perspective: 1rem;
     transform-style: preserve-3d;
@@ -18,7 +18,7 @@
     opacity: 1;
     padding-top: 2.35rem;
     padding-right: 5.1rem;
-    animation: shrink 0.5s linear;
+    animation: shrink 0.3s linear;
     svg {
       g {
         fill: var(--theme-color-level-4);

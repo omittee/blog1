@@ -1,0 +1,90 @@
+[data-component="LoginModel"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  width: 50%;
+  height: 35%;
+  z-index: 999;
+  background-image: var(--card-bg-linear);
+  border-radius: 3rem;
+  animation: popUp 0.3s ease-in forwards;
+  --linear-image: linear-gradient(
+    to top left,
+    var(--theme-color-level-2),
+    var(--theme-color-level-3),
+    var(--theme-color-level-4)
+  );
+  .inputBox {
+    width: 80%;
+    height: 20%;
+    background: var(--linear-image);
+      border-radius: 1rem;
+    input {
+      width: 90%;
+      height: 100%;
+      border: none;
+      font-size: 2rem;
+      background-color: transparent;
+      color: var(--bg-color);
+      padding-left: 1rem;
+      caret-color: var(--bg-color);
+      &::placeholder {
+        color: var(--bg-color);
+        font-size: 1.5rem;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .confirm {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 3.5rem;
+    border: 1.5px solid var(--theme-color-level-3);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: transparent;
+    transform: perspective(1px) translateZ(0);
+    color: var(--theme-color-level-3);
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: "";
+      border-radius: 1rem;
+      transform: scale(0);
+      background: var(--linear-image);
+      transition: transform 0.3s ease-out;
+      z-index: -1;
+    }
+    &:hover {
+      color: var(--bg-color);
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+  @keyframes popUp {
+    0% {
+      transform: scale(0.5);
+    }
+    70% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
