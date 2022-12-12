@@ -34,12 +34,10 @@ const queryTagsInfo = async () => {
 const createOrUpdate = async (info: dataType) => {
   return await Article.findOne({ _id: info._id }).then((res) => {
     if (res) {
-      console.log(res, "更新");
       Article.updateOne({ _id: info._id }, info).catch(e => console.log(e));
       return 1;
     }
     else {
-      console.log("生成")
       new Article(info).save((e) => {
         if (e) console.log(e);
       });

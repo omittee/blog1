@@ -1,50 +1,40 @@
 import React, { useState } from "react";
 import AboutBoard from "./components/About/AboutBoard";
 import ArticleBoard from "./components/Article/ArticleBoard";
-import {
-  ThemeContext,
-  SwitchContext,
-  EditContext,
-} from "@/GlobalContext/globalContext";
+import { ThemeContext, AnimeContext } from "@/GlobalContext/globalContext";
 import "@/assets/CSS/app.scss";
 import SwitchAnimation from "./components/SwitchAnimation";
 function App() {
   const [isDarkTheme, setTheme] = useState(false);
   const [showSwitch, setSwitch] = useState(false);
   return (
-    <EditContext.Provider
+    <AnimeContext.Provider
       value={{
-        isLogin: true,
+        showAnime: showSwitch,
+        toggleAnime() {
+          setSwitch(true);
+          setTimeout(() => setSwitch(false), 2000);
+        },
       }}
     >
-      <SwitchContext.Provider
+      <ThemeContext.Provider
         value={{
-          showSwitch,
-          toggleSwitch() {
-            setSwitch(true);
-            setTimeout(() => setSwitch(false), 2000);
+          isDarkTheme,
+          toggleTheme: () => {
+            setTheme((pre) => !pre);
           },
         }}
       >
-        <ThemeContext.Provider
-          value={{
-            isDarkTheme,
-            toggleTheme: () => {
-              setTheme((pre) => !pre);
-            },
-          }}
+        <div
+          className="app hideScrollBar"
+          data-theme={isDarkTheme ? "dark" : "light"}
         >
-          <div
-            className="app hideScrollBar"
-            data-theme={isDarkTheme ? "dark" : "light"}
-          >
-            <AboutBoard></AboutBoard>
-            <ArticleBoard></ArticleBoard>
-            <SwitchAnimation></SwitchAnimation>
-          </div>
-        </ThemeContext.Provider>
-      </SwitchContext.Provider>
-    </EditContext.Provider>
+          <AboutBoard></AboutBoard>
+          <ArticleBoard></ArticleBoard>
+          <SwitchAnimation></SwitchAnimation>
+        </div>
+      </ThemeContext.Provider>
+    </AnimeContext.Provider>
   );
 }
 

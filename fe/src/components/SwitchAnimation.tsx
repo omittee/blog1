@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { SwitchContext } from "@/GlobalContext/globalContext";
+import { AnimeContext } from "@/GlobalContext/globalContext";
 import "@/assets/CSS/switchAnimation.scss";
 function SwitchAnimation() {
   const logoRef = useRef(null);
@@ -21,8 +21,8 @@ function SwitchAnimation() {
     }, 400);
   }
   return (
-    <SwitchContext.Consumer>
-      {({ showSwitch }) => {
+    <AnimeContext.Consumer>
+      {({ showAnime: showSwitch }) => {
         if (showSwitch) scaleAnimate();
         return (
           <div
@@ -87,7 +87,7 @@ function SwitchAnimation() {
           </div>
         );
       }}
-    </SwitchContext.Consumer>
+    </AnimeContext.Consumer>
   );
 }
 export default SwitchAnimation;
