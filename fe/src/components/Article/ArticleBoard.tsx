@@ -17,14 +17,6 @@ import {
 } from "@/network/request";
 import { dataType, tagType } from "@/shared/types";
 import "@/assets/CSS/Article/articleBoard.scss";
-const defalutData = {
-  _id: "",
-  title: "",
-  tags: "",
-  abstract: "",
-  content: "",
-  lastModified: "",
-};
 
 function ArticleBoard() {
   const [articles, setArticles] = useState([] as dataType[]);
