@@ -13,7 +13,7 @@ function App() {
         showAnime: showSwitch,
         toggleAnime() {
           setSwitch(true);
-          setTimeout(() => setSwitch(false), 2000);
+          setTimeout(() => setSwitch(false), 1500);
         },
       }}
     >

@@ -1,8 +1,10 @@
 import axios, { tokenName } from "./axios";
 import sha256 from "sha256";
-import { dataType, loginProps } from "@/shared/types";
+import { dataType, detailDataType, loginProps, modifyDataType, tagType } from "@/shared/types";
 
-export function isLogin() {
+export const articleNumPerPage = 10;
+
+export function checkLogin() {
   return !!sessionStorage.getItem(tokenName);
 }
 
@@ -28,8 +30,8 @@ export async function login(data: loginProps) {
     .catch(e => console.log(e));
 }
 
-export async function createOrUpdate(data: dataType) {
-  if (!isLogin()) {
+export async function createOrUpdate(data: detailDataType) {
+  if (!checkLogin()) {
     alert("请先登录！");
     return false;
   }
@@ -44,7 +46,7 @@ export async function createOrUpdate(data: dataType) {
 }
 
 export async function deleteArticle(id: string) {
-  if (!isLogin()) {
+  if (!checkLogin()) {
     alert("请先登录！");
     return false;
   }
@@ -71,7 +73,39 @@ export async function getArticle(page: number = 0, pageSize: number = 10, regStr
       pageSize,
       regStr
     }
-  }).then(res=>res.data as dataType[])
+  }).then(res => res.data as dataType[])
     .catch(e => console.log(e));
+}
+export async function getContentByID(_id: string) {
+  return await axios.get('/getContentByID', {
+    params: {
+      _id
+    }
+  }).then(res => {
+    if (res.data.status === 200) {
+      return res.data.data as modifyDataType
+    }
+    else return null;
+  }).catch(e => console.log(e));
+}
+export async function getArticleNum(regStr: string) {
+  return await axios.get("/getArticleNum", {
+    params: {
+      regStr
+    }
+  }).then((res) => {
+    if (res.data.status === 200)
+      return +res.data.data
+    else return 0;
+  })
+    .catch(e => console.log(e));
+}
 
+export async function getTagsInfo() {
+  return await axios.get("/getTagsInfo").then(res => {
+    if (res.data.status === 200) {
+      return res.data.data as tagType[];
+    }
+    else return []
+  }).catch(e => console.log(e))
 }

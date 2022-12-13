@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LoginModel from "../Model/LoginModel";
 import "@/assets/CSS/NavigatorBar/navigatorBar.scss";
-import { ThemeContext } from "@/GlobalContext/globalContext";
+import {
+  ThemeContext,
+  ArticleContext,
+  LoginContext,
+} from "@/GlobalContext/globalContext";
 import ArticleModel from "../Model/ArticleModel";
-import { isLogin } from "@/network/request";
+import { checkLogin } from "@/network/request";
 function NavigatorBar() {
   const [searchValue, setSearchValue] = useState("");
   const [isShow, setShow] = useState(false);
   return (
+    <LoginContext.Consumer>
+      {({ isLogin }) => {
+        return (
           <>
-            {isLogin() ? (
+            {checkLogin()&&isLogin ? (
               <ArticleModel
                 isShow={isShow}
                 setShow={() => {
@@ -88,13 +95,36 @@ function NavigatorBar() {
               </div>
 
               <div className="searchBox">
-                <input
-                  type="search"
-                  placeholder="搜索文章"
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                />
-                <i className="ic i-search"></i>
+                <ArticleContext.Consumer>
+                  {({ updateReg }) => {
+                    function search() {
+                      console.log(updateReg);
+                      console.log(searchValue);
+                      if (/^\/.+\//.test(searchValue)) {
+                        const regStr = /(?<=\/).+(?=\/)/.exec(
+                          searchValue
+                        )?.[0] as string;
+                        updateReg(regStr);
+                      } else updateReg(searchValue);
+                    }
+                    return (
+                      <>
+                        <input
+                          type="search"
+                          placeholder="搜索文章"
+                          value={searchValue}
+                          onChange={(e) => {
+                            setSearchValue(e.target.value);
+                          }}
+                          onKeyUp={(e) => {
+                            if (e.key === "Enter") search();
+                          }}
+                        />
+                        <i className="ic i-search" onClick={() => search()}></i>
+                      </>
+                    );
+                  }}
+                </ArticleContext.Consumer>
               </div>
               <label htmlFor="themeControl">
                 <div className="theme">
@@ -126,5 +156,8 @@ function NavigatorBar() {
             </nav>
           </>
         );
+      }}
+    </LoginContext.Consumer>
+  );
 }
 export default NavigatorBar;

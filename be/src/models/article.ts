@@ -10,11 +10,37 @@ const queryArticle = async (page: number, pageSize: number, regStr: string) => {
     }, {
       content: reg
     }],
-  }).skip(page * pageSize).limit(pageSize).catch(e => console.log(e));
+  }).skip(page * pageSize).limit(pageSize).select({
+    _id: 1,
+    title: 1,
+    tags: 1,
+    abstract: 1,
+    lastModified: 1,
+  }).catch(e => console.log(e));
 }
 
-const queryArticleNum = async () => {
-  return await Article.count().catch(e => console.log(e));
+const queryContentByID = async (_id: string) => {
+  return await Article.findOne({
+    _id
+  }).select({
+    _id:1,
+    title:1,
+    tags: 1,
+    content:1
+  }).catch(e=>console.log(e));
+}
+
+const queryArticleNum = async (regStr: string) => {
+  const reg = new RegExp(regStr, "i");
+  return await Article.find({
+    $or: [{
+      title: reg
+    }, {
+      tags: reg
+    }, {
+      content: reg
+    }],
+  }).count().catch(e => console.log(e));
 }
 
 const queryTagsInfo = async () => {
@@ -55,6 +81,7 @@ const deleteArticle = async (_id: string): Promise<boolean> => {
 
 export default {
   queryArticle,
+  queryContentByID,
   queryArticleNum,
   queryTagsInfo,
   createOrUpdate,

@@ -5,6 +5,7 @@ import koaJwt from 'koa-jwt'
 
 const r = new router();
 r.get('/getArticle', article.getArticle)
+  .get('/getContentByID', article.getContentByID)
   .get('/getArticleNum', article.getArticleNum)
   .get('/getTagsInfo', article.getTagsInfo)
   .post('/login', login)

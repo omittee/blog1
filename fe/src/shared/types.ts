@@ -2,21 +2,38 @@ export interface dataType {
   _id: string;
   title: string;
   tags: string;
-  content: string;
+  abstract: string;
   lastModified: string;
 }
+export interface detailDataType extends dataType {
+  content: string;
+}
+export interface modifyDataType {
+  _id: string;
+  title: string;
+  tags: string;
+  content: string;
+}
+export type tagType = [string, number];
+
 export interface ArticleCardProps {
   article: dataType;
   index: number;
 }
-export  interface PagerProps {
-  pageNum: number;
+export interface ArticleListProps {
+  articles: dataType[];
+  initAndRefresh: () => void;
 }
 export interface showModelProps {
-  isShow: boolean
-  setShow: () => void
-  data?: dataType
+  isShow: boolean;
+  setShow: () => void;
+  data?: modifyDataType;
+  setArticle?: (res: modifyDataType) => void;
 }
 export interface loginProps {
-  pwd: string
+  pwd: string;
+}
+export interface ButtonProps {
+  data: modifyDataType;
+  setArticle: (res: modifyDataType)=>void;
 }

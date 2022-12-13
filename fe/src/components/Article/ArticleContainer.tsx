@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
+import { useParams } from "react-router-dom";
 import Markdown from "react-markdown";
-import str from "@/constants/md";
-import data from "@/constants/data";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
@@ -13,9 +12,23 @@ import rehypeToc from "@jsdevtools/rehype-toc";
 import "@/assets/CSS/Article/articleContainer.scss";
 import copy from "@/utils/copy";
 import { ThemeContext } from "@/GlobalContext/globalContext";
+import { modifyDataType } from "@/shared/types";
+import { getContentByID } from "@/network/request";
 // 设置高亮样式
 
 function ArticleContainer() {
+  const [articleInfo, setArticleInfo] = useState({
+    _id: "",
+    title: "",
+    tags: "",
+    content: "",
+  } as modifyDataType);
+    const params = useParams();
+  useEffect(()=>{
+    getContentByID(params._id??"").then((res)=>{
+      if(res) setArticleInfo(res)
+    })
+  },[])
   return (
     <ThemeContext.Consumer>
       {({ isDarkTheme }) => {
@@ -108,9 +121,9 @@ function ArticleContainer() {
                   },
                 }}
               >
-                {str}
+                {articleInfo.content}
               </Markdown>
-            <Button data={data[0]}></Button>
+              <Button data={articleInfo} setArticle={setArticleInfo}></Button>
             </div>
           </>
         );
