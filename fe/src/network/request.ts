@@ -27,7 +27,9 @@ export async function login(data: loginProps) {
         return false;
       }
     })
-    .catch(e => console.log(e));
+    .catch(e => {
+      if (!axios.isCancel(e)) console.log(111, e);
+    });
 }
 
 export async function createOrUpdate(data: detailDataType) {
@@ -42,7 +44,9 @@ export async function createOrUpdate(data: detailDataType) {
       }
       else return false
     })
-    .catch(e => console.log(e));
+    .catch(e => {
+      if (!axios.isCancel(e)) console.log(111, e);
+    });
 }
 
 export async function deleteArticle(id: string) {
@@ -63,7 +67,9 @@ export async function deleteArticle(id: string) {
       alert("删除失败！");
       return false;
     }
-  }).catch(e => console.log(e));
+  }).catch(e => {
+    if (!axios.isCancel(e)) console.log(111, e);
+  });
 }
 
 export async function getArticle(page: number = 0, pageSize: number = 10, regStr: string = "") {
@@ -74,7 +80,9 @@ export async function getArticle(page: number = 0, pageSize: number = 10, regStr
       regStr
     }
   }).then(res => res.data as dataType[])
-    .catch(e => console.log(e));
+    .catch(e => {
+      if (!axios.isCancel(e)) console.log(111, e);
+    });
 }
 export async function getContentByID(_id: string) {
   return await axios.get('/getContentByID', {
@@ -86,7 +94,9 @@ export async function getContentByID(_id: string) {
       return res.data.data as modifyDataType
     }
     else return null;
-  }).catch(e => console.log(e));
+  }).catch(e => {
+    if (!axios.isCancel(e)) console.log(111, e);
+  });
 }
 export async function getArticleNum(regStr: string) {
   return await axios.get("/getArticleNum", {
@@ -98,7 +108,9 @@ export async function getArticleNum(regStr: string) {
       return +res.data.data
     else return 0;
   })
-    .catch(e => console.log(e));
+    .catch(e => {
+      if (!axios.isCancel(e)) console.log(111, e);
+    });
 }
 
 export async function getTagsInfo() {
@@ -107,5 +119,8 @@ export async function getTagsInfo() {
       return res.data.data as tagType[];
     }
     else return []
-  }).catch(e => console.log(e))
+  })
+  .catch(e => {
+    if (!axios.isCancel(e)) console.log(111, e);
+  });
 }

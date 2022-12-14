@@ -16,6 +16,8 @@ const queryArticle = async (page: number, pageSize: number, regStr: string) => {
     tags: 1,
     abstract: 1,
     lastModified: 1,
+  }).sort({
+    lastModified: -1
   }).catch(e => console.log(e));
 }
 

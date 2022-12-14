@@ -47,12 +47,6 @@ function DecorativeArticle() {
             </div>
           </div>
         </div>
-        {/* <div className="pillar"></div>
-      <div className="base">
-        <div className="base-ud"></div> 
-        <div className="base-lr"></div>
-        <div className="base-fe"></div>
-      </div> */}
       </div>
     </div>
   );

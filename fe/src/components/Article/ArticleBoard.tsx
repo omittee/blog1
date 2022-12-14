@@ -40,13 +40,18 @@ function ArticleBoard() {
   useEffect(() => {
     initAndRefresh();
   }, []);
+  useEffect(() => {
+    getArticle(0, articleNumPerPage, regStr).then((res) => {
+      setArticles(res ?? []);
+    });
+  }, [regStr]);
   return (
     <div className="articleBoard" data-component="ArticleBoard" id="main">
       <AnimeContext.Consumer>
         {({ toggleAnime }) => {
           function updatePage(page: number) {
             toggleAnime();
-            setCurPage(() => page);
+            setCurPage(page);
             getArticle(page, articleNumPerPage, regStr).then((res) => {
               setArticles(res ?? []);
             });
@@ -55,9 +60,6 @@ function ArticleBoard() {
             toggleAnime();
             setCurPage(0);
             setRegStr(regStr);
-            getArticle(0, articleNumPerPage, regStr).then((res) => {
-              setArticles(res ?? []);
-            });
           }
           return (
             <ArticleContext.Provider
@@ -67,7 +69,7 @@ function ArticleBoard() {
                 curPage,
                 updatePage,
                 updateReg,
-                initAndRefresh
+                initAndRefresh,
               }}
             >
               <LoginContext.Provider
@@ -81,14 +83,14 @@ function ArticleBoard() {
                   <Routes>
                     <Route
                       path="list"
-                      element={<ArticleList articles={articles} initAndRefresh={initAndRefresh}/>}
-                    />
-                    <Route
-                      path="article/:_id"
                       element={
-                        <ArticleContainer/>
+                        <ArticleList
+                          articles={articles}
+                          initAndRefresh={initAndRefresh}
+                        />
                       }
                     />
+                    <Route path="article/:_id" element={<ArticleContainer />} />
                     <Route path="*" element={<Navigate to="list" />}></Route>
                   </Routes>
 

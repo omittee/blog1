@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import DecorativeArticle from "./DecorativeArticle";
 import DecorativeBall from "./DecorativeBall";
 import "@/assets/CSS/About/aboutBoard.scss";
-import info from "@/constants/introduction";
+import info from "@/constants/constants";
 function AboutBoard() {
   const [showInfo, setShowInfo] = useState(false);
   //svg text 动画

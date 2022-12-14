@@ -21,7 +21,7 @@ const articleSchema = new Schema({
     required: true
   },
   lastModified: {
-    type: String,
+    type: Number,
     required: true
   }
 }, { _id: false })

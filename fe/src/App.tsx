@@ -4,8 +4,9 @@ import ArticleBoard from "./components/Article/ArticleBoard";
 import { ThemeContext, AnimeContext } from "@/GlobalContext/globalContext";
 import "@/assets/CSS/app.scss";
 import SwitchAnimation from "./components/SwitchAnimation";
+import { DarkTheme } from "./constants/constants";
 function App() {
-  const [isDarkTheme, setTheme] = useState(false);
+  const [isDarkTheme, setTheme] = useState(localStorage.getItem(DarkTheme) === "dark");
   const [showSwitch, setSwitch] = useState(false);
   return (
     <AnimeContext.Provider

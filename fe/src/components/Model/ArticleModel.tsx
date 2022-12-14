@@ -24,7 +24,7 @@ function ArticleModel(props: showModelProps) {
             tags,
             abstract: content.slice(0, 100) + "...",
             content,
-            lastModified: new Date().toDateString(),
+            lastModified: new Date().getTime(),
           };
           const res = await createOrUpdate(data);
           if (res) {

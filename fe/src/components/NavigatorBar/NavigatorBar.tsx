@@ -8,15 +8,18 @@ import {
 } from "@/GlobalContext/globalContext";
 import ArticleModel from "../Model/ArticleModel";
 import { checkLogin } from "@/network/request";
+import { useNavigate } from "react-router-dom";
+import { DarkTheme } from "@/constants/constants";
 function NavigatorBar() {
   const [searchValue, setSearchValue] = useState("");
   const [isShow, setShow] = useState(false);
+  const navigate = useNavigate();
   return (
     <LoginContext.Consumer>
       {({ isLogin }) => {
         return (
           <>
-            {checkLogin()&&isLogin ? (
+            {checkLogin() && isLogin ? (
               <ArticleModel
                 isShow={isShow}
                 setShow={() => {
@@ -35,7 +38,6 @@ function NavigatorBar() {
               <div
                 className="logo"
                 onClick={() => {
-                  console.log("aaa");
                   setShow((pre) => !pre);
                 }}
               >
@@ -98,14 +100,13 @@ function NavigatorBar() {
                 <ArticleContext.Consumer>
                   {({ updateReg }) => {
                     function search() {
-                      console.log(updateReg);
-                      console.log(searchValue);
                       if (/^\/.+\//.test(searchValue)) {
                         const regStr = /(?<=\/).+(?=\/)/.exec(
                           searchValue
                         )?.[0] as string;
                         updateReg(regStr);
                       } else updateReg(searchValue);
+                      navigate("/list");
                     }
                     return (
                       <>
@@ -137,7 +138,13 @@ function NavigatorBar() {
                             checked={isDarkTheme}
                             id="themeControl"
                             className="hide"
-                            onChange={toggleTheme}
+                            onChange={() => {
+                              localStorage.setItem(
+                                DarkTheme,
+                                isDarkTheme ? "light" : "dark"
+                              );
+                              toggleTheme();
+                            }}
                           />
                           <div className="switch">
                             <div className="pattern">

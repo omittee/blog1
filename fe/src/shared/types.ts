@@ -3,7 +3,7 @@ export interface dataType {
   title: string;
   tags: string;
   abstract: string;
-  lastModified: string;
+  lastModified: number;
 }
 export interface detailDataType extends dataType {
   content: string;

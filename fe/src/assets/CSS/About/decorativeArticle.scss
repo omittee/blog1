@@ -25,7 +25,7 @@
       width: 100rem;
       height: 100rem;
       background-image: radial-gradient(#fff, transparent),
-      url('~@public/marble2.jpg');
+      url('~@public/image/marble.jpg');
       background-blend-mode: multiply;
       border-radius: 50%;
       transform: translate(-50%, -50%) rotateX(90deg) translateZ(4.5rem);
@@ -56,7 +56,7 @@
           height: 100%;
           background-color: transparent;
           border: calc(var(--size) / 20) solid transparent;
-          border-image: url("~@public/wood.png") 30;
+          border-image: url("~@public/image/wood.png") 30;
         }
       }
       &-front {
@@ -76,7 +76,7 @@
         &::after {
           content: "";
           background-color: var(--wood-color);
-          background-image: url("~@public/wood.png");
+          background-image: url("~@public/image/wood.png");
           box-shadow: 0 0 1rem #0007 inset;
         }
         &::before {
