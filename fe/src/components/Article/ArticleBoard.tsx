@@ -26,6 +26,7 @@ function ArticleBoard() {
   const [regStr, setRegStr] = useState("");
   const [tags, setTags] = useState([] as tagType[]);
   const [isLogin, setLogin] = useState(checkLogin());
+  const MemoArticleList = React.memo(ArticleList);
   function initAndRefresh() {
     getArticle().then((res) => {
       setArticles(res ?? []);
@@ -85,9 +86,8 @@ function ArticleBoard() {
                     <Route
                       path="list"
                       element={
-                        <ArticleList
+                        <MemoArticleList
                           articles={articles}
-                          initAndRefresh={initAndRefresh}
                         />
                       }
                     />

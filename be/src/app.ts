@@ -5,6 +5,9 @@ import Router from 'koa-router'
 import json from 'koa-json'
 import logger from 'koa-logger'
 import body, { HttpMethodEnum } from 'koa-body'
+import serve from 'koa-static'
+import historyApiFallback from 'koa-history-api-fallback'
+import path from 'path'
 import { connectDB } from './config/mongo'
 // import auth from './server/routes/auth'
 import api from './routes/api'
@@ -44,11 +47,12 @@ app.on('error', function (err) {
   console.log('server error', err);
 });
 
-// r.use('/auth', auth.routes());
 r.use(api.routes());
 
 app.use(r.routes())
 app.use(r.allowedMethods())
+app.use(historyApiFallback())
+app.use(serve(path.resolve('../../fe/build')))
 app.listen(3060, () => {
   console.log('Koa is listening in 3060');
 });

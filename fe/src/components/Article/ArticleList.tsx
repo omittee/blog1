@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ArticleNav from "./ArticleNav";
 import ArticleCard from "./ArticleCard";
 import ArticlePager from "./ArticlePager";
@@ -16,9 +16,6 @@ function ArticleList(props: ArticleListProps) {
       这里空空如也哦～
     </div>
   );
-  useEffect(() => {
-    props.initAndRefresh();
-  }, []);
   return (
     <div data-component="ArticleList">
       <div className="list">

@@ -22,7 +22,6 @@ export interface ArticleCardProps {
 }
 export interface ArticleListProps {
   articles: dataType[];
-  initAndRefresh: () => void;
 }
 export interface showModelProps {
   isShow: boolean;
