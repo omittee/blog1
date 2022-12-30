@@ -85,7 +85,7 @@
       position: relative;
       width: 70%;
       height: 70%;
-      border: 0.25rem solid #999;
+      box-shadow: 0rem 0rem 1.2rem -0.4rem var(--bg-reverse-color);
       border-radius: 2.1rem;
       background: var(--linear);
       .pattern {

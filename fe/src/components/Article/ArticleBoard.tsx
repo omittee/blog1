@@ -17,6 +17,7 @@ import {
 } from "@/network/request";
 import { dataType, tagType } from "@/shared/types";
 import "@/assets/CSS/Article/articleBoard.scss";
+import ArticleFooter from "./ArticleFooter";
 
 function ArticleBoard() {
   const [articles, setArticles] = useState([] as dataType[]);
@@ -97,6 +98,7 @@ function ArticleBoard() {
                   <Outlet></Outlet>
                 </div>
                 ;
+                  <ArticleFooter></ArticleFooter>
               </LoginContext.Provider>
             </ArticleContext.Provider>
           );

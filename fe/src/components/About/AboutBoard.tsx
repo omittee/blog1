@@ -19,9 +19,9 @@ function AboutBoard() {
       arr[i].style.animationDelay = `${i * 0.1 + 3}s`;
     }
     setTimeout(() => setShowInfo(true), 3000);
-  },[]);
+  }, []);
   //span text 动画
-  const infoTxt1 = info.me.split("").map((x, i) => (
+  const meText = info.me.split("").map((x, i) => (
     <span
       className="info"
       style={{ transitionDelay: i * 0.1 + 2 + "s" }}
@@ -30,7 +30,7 @@ function AboutBoard() {
       {x}
     </span>
   ));
-  const infoTxt2 = info.welcome.split("").map((x, i) => (
+  const welcomText = info.welcome.split("").map((x, i) => (
     <span
       className="info"
       style={{ transitionDelay: i * 0.1 + 5 + "s" }}
@@ -39,6 +39,58 @@ function AboutBoard() {
       {x}
     </span>
   ));
+  const personText = {
+    contact: info.personInfo.contact.split("").map((x, i) => (
+      <span
+        className="info"
+        style={{ transitionDelay: i * 0.1 + 8.5 + "s" }}
+        key={i}
+      >
+        {x}
+      </span>
+    )),
+    github: info.personInfo.github.split("").map((x, i) => (
+      <span
+        className="info"
+        style={{ transitionDelay: i * 0.1 + 9.5 + "s" }}
+        key={i}
+      >
+        {x}
+      </span>
+    )),
+    link: (
+      <a
+        className="info link"
+        style={{ transitionDelay: "10.5s" }}
+        href={info.personInfo.link}
+        target="blank"
+      >
+        <i className="ic i-github"></i>
+        {info.personInfo.username}
+      </a>
+    ),
+  };
+  const projectText = {
+    msg: info.projectInfo.msg.split("").map((x, i) => (
+      <span
+        className="info"
+        style={{ transitionDelay: i * 0.1 + 12 + "s" }}
+        key={i}
+      >
+        {x}
+      </span>
+    )),
+    link: (
+      <a
+        className="info link"
+        style={{ transitionDelay: "14s" }}
+        href={info.personInfo.link}
+        target="blank"
+      >
+        {info.projectInfo.repo}
+      </a>
+    ),
+  };
   return (
     <label htmlFor="infoControl">
       <div className="aboutBoard" id="about" data-component="AboutBoard">
@@ -53,7 +105,7 @@ function AboutBoard() {
         <div className="infoCard">
           <div className="bgBox">
             <div className="text">
-              {infoTxt1}
+              {meText}
               <svg
                 width="444"
                 height="112"
@@ -109,7 +161,18 @@ function AboutBoard() {
                 </g>
               </svg>
               <br />
-              {infoTxt2}
+              <br />
+              {welcomText}
+              <br />
+              <br />
+              {personText.contact}
+              <br />
+              {personText.github}
+              {personText.link}
+              <br />
+              <br />
+              {projectText.msg}
+              {projectText.link}
             </div>
           </div>
           <div className="ball">

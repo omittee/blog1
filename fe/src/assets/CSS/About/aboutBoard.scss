@@ -81,6 +81,14 @@
       font-size: 1.9rem;
       font-family: "Alex Brush", "Ma Shan Zheng", "Consolas", "楷体";
       color: var(--bg-reverse-color);
+      .link {
+        color: var(--theme-color-level-4);
+        font-size: 3rem;
+        i {
+          font-size: 1.5rem;
+          padding-right: 0.5rem;
+        }
+      }
       .name {
         padding: 0 1rem;
         width: 10rem;

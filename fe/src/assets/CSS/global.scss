@@ -2,20 +2,18 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  // firefox
+
   scrollbar-width: thin;
   scrollbar-color: var(--theme-color-level-3) transparent;
-  // chromium
+
   &::-webkit-scrollbar {
     width: 0.3rem;
     height: 0.3rem;
     background-color: transparent;
   }
-  // 定义滚动条轨道：内阴影+圆角
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
-  // 定义滑块：内阴影+圆角
   &::-webkit-scrollbar-thumb {
     border-radius: 999px;
     background: linear-gradient(
@@ -27,7 +25,6 @@
   }
 }
 .hideScrollBar {
-  // firefox
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
