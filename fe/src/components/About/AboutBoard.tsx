@@ -103,7 +103,7 @@ function AboutBoard() {
           onChange={() => setShowInfo(!showInfo)}
         />
         <div className="infoCard">
-          <div className="bgBox">
+          <div className="bgBox hideScrollBar">
             <div className="text">
               {meText}
               <svg

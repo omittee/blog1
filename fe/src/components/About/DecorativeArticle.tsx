@@ -1,10 +1,11 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 import DecorativeBall from "./DecorativeBall";
 import "@/assets/CSS/About/decorativeArticle.scss";
 function DecorativeArticle() {
   return (
     <div data-component="DecorativeArticle">
-      <div className="decoContainer">
+      <div className={isMobile ? "decoContainer" : "decoContainer rolling"}>
         <div className="floor"></div>
         <div className="square squareBox">
           <div className="square-front"></div>
