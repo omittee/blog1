@@ -6,7 +6,7 @@ import { AnimeContext, ArticleContext } from "@/GlobalContext/globalContext";
 function ArticleCard(props: ArticleCardProps) {
   const navigate = useNavigate();
   const date = new Date(props.article.lastModified);
-  const timeStr = `${date.getFullYear()}/${date.getMonth()}/${date.getDay()} ${date.getHours()}:${date.getMinutes()}`;
+  const timeStr = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2,'0')}`;
   return (
     <AnimeContext.Consumer>
       {({toggleAnime}) => {
