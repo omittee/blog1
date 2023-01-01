@@ -18,6 +18,21 @@
     background-color: #eee;
     transform: rotate3d(0, 1, 0, -0deg);
     font-size: 1.25rem;
+    animation: roll 60s linear infinite;
+    .logo {
+      width: 16em;
+      height: 100vh;
+      bottom: 0;
+      transform: translateX(-50%);
+      svg {
+        width: 100%;
+        g {
+          fill: var(--theme-color-level-4);
+          stroke-width: 0.05rem;
+          stroke: var(--theme-color-level-4);
+        }
+      }
+    }
     .floor {
       top: 0;
       left: 0;
@@ -112,21 +127,6 @@
       bottom: 0;
       transform: translate(-50%, -35%) rotateZ(45deg);
     }
-    .square-1 {
-      transform: rotate3d(-1, 1, 0, 90deg);
-    }
-    .square-2 {
-      transform: rotate3d(1, 1, 0, 90deg);
-    }
-    .square-3 {
-      transform: rotate3d(-1, 1, 0, 90deg);
-    }
-    .square-4 {
-      transform: rotate3d(1, 1, 0, 90deg);
-    }
-  }
-  .rolling {
-    animation: roll 60s linear infinite;
     .square-1 {
       animation: squareRoll-1 30s linear reverse infinite;
     }
