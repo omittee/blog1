@@ -1,4 +1,6 @@
 [data-component="ArticleList"] {
+  max-width: 1200px;
+  margin: auto;
   .list {
     display: flex;
     gap: 1.5rem;

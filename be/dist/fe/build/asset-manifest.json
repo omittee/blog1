@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.d84ed670.css",
+    "main.css": "/static/css/main.40c48402.css",
     "main.js": "/static/js/main.ca6ed4b7.js",
     "static/js/27.c18d7fe4.chunk.js": "/static/js/27.c18d7fe4.chunk.js",
     "static/media/marble.jpg": "/static/media/marble.efc442ea735085832cf2.jpg",
@@ -8,7 +8,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.d84ed670.css",
+    "static/css/main.40c48402.css",
     "static/js/main.ca6ed4b7.js"
   ]
 }
