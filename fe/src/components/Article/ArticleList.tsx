@@ -1,4 +1,4 @@
-import React from "react";
+import {memo} from "react";
 import ArticleNav from "./ArticleNav";
 import ArticleCard from "./ArticleCard";
 import ArticlePager from "./ArticlePager";
@@ -26,4 +26,4 @@ function ArticleList(props: ArticleListProps) {
     </div>
   );
 }
-export default ArticleList;
+export default memo(ArticleList);

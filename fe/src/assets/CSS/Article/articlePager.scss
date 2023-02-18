@@ -14,27 +14,27 @@
     width: 20rem;
     margin: auto;
     transition: all 0.3s ease-in-out;
-    .pre,
-    .next,
-    .page {
-      width: 2rem;
-      height: 2rem;
-      text-align: center;
-      line-height: 2rem;
-      border-radius: 50%;
-      background: var(--card-bg-linear);
-      color: var(--text-color);
-      cursor: pointer;
-    }
-    .hide {
-      display: none;
-    }
-    .page:hover,
-    .pre:not(.disable):hover,
-    .next:not(.disable):hover,
-    .active {
-      background: var(--linear-image);
-      color: var(--bg-color);
-    }
+  }
+  .pre,
+  .next,
+  .page {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    border-radius: 50%;
+    background: var(--card-bg-linear);
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  .hide {
+    display: none;
+  }
+  .page:hover,
+  .pre:not(.disable):hover,
+  .next:not(.disable):hover,
+  .active {
+    background: var(--linear-image);
+    color: var(--bg-color);
   }
 }

@@ -3,142 +3,161 @@
   bottom: 0;
   transform-style: preserve-3d;
   z-index: -1;
-  *,
-  *::after,
-  *::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: block;
-    transform-style: preserve-3d;
-  }
   .decoContainer {
     width: 0rem;
     height: 0rem;
+    position: absolute;
+    transform-style: preserve-3d;
     background-color: #eee;
     transform: rotate3d(0, 1, 0, -0deg);
     font-size: 1.25rem;
     animation: roll 60s linear infinite;
-    .logo {
-      width: 16em;
-      height: 100vh;
-      bottom: 0;
-      transform: translateX(-50%);
-      svg {
-        width: 100%;
-        g {
-          fill: var(--theme-color-level-4);
-          stroke-width: 0.05rem;
-          stroke: var(--theme-color-level-4);
-        }
-      }
-    }
-    .floor {
-      top: 0;
-      left: 0;
-      width: 100rem;
-      height: 100rem;
-      background-image: radial-gradient(#fff, transparent),
-        url("~@public/image/marble.jpg");
-      background-blend-mode: multiply;
-      border-radius: 50%;
-      transform: translate(-50%, -50%) rotateX(90deg) translateZ(4.5rem);
-    }
-    .square {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      --size: 32em;
-      font-size: 0.8em;
-      width: var(--size);
-      height: var(--size);
+  }
+  .logo {
+    position: absolute;
+    transform-style: preserve-3d;
+    bottom: 0;
+    width: 16em;
+    height: 100vh;
+    transform: translateX(-50%);
+  }
+  svg {
+    width: 100%;
+  }
+  g {
+    fill: var(--theme-color-level-4);
+    stroke-width: 0.05rem;
+    stroke: var(--theme-color-level-4);
+  }
+  .floor {
+    position: absolute;
+    transform-style: preserve-3d;
+    top: 0;
+    left: 0;
+    width: 100rem;
+    height: 100rem;
+    background-image: radial-gradient(#fff, transparent),
+      url("~@public/image/marble.jpg");
+    background-blend-mode: multiply;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(4.5rem);
+  }
+  .square {
+    position: absolute;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --size: 32em;
+    font-size: 0.8em;
+    width: var(--size);
+    height: var(--size);
+    background-color: transparent;
+    box-sizing: border-box;
+  }
+  .square-front,
+  .square-back {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: calc(var(--size) / 20) solid var(--wood-color);
+    box-shadow: 0 0 1rem #0007 inset;
+    &::after {
+      position: absolute;
+      display: block;
+      transform-style: preserve-3d;
+      width: 100%;
+      height: 100%;
+      top: calc(var(--size) / -20);
+      left: calc(var(--size) / -20);
+      content: "";
       background-color: transparent;
-      box-sizing: border-box;
-      &-front,
-      &-back {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        background-color: transparent;
-        border: calc(var(--size) / 20) solid var(--wood-color);
-        box-shadow: 0 0 1rem #0007 inset;
-        &::after {
-          top: calc(var(--size) / -20);
-          left: calc(var(--size) / -20);
-          content: "";
-          width: 100%;
-          height: 100%;
-          background-color: transparent;
-          border: calc(var(--size) / 20) solid transparent;
-          border-image: url("~@public/image/wood.png") 30;
-        }
-      }
-      &-front {
-        transform: translateZ(calc(var(--size) / 20));
-      }
-      &-back {
-        transform: translateZ(calc(var(--size) / -20));
-      }
-      &-top,
-      &-bottom,
-      &-left,
-      &-right {
-        width: 100%;
-        height: calc(var(--size) / 10);
-        background-color: transparent;
-        &::before,
-        &::after {
-          content: "";
-          background-color: var(--wood-color);
-          background-image: url("~@public/image/wood.png");
-          box-shadow: 0 0 1rem #0007 inset;
-        }
-        &::before {
-          transform: translateZ(calc(var(--size) / 20));
-        }
-      }
-      &-top {
-        top: 0;
-        left: 0;
-        transform: rotateX(90deg);
-      }
-      &-bottom {
-        bottom: 0;
-        left: 0;
-        transform: rotateX(-90deg);
-      }
-      &-left {
-        left: 0;
-        height: 100%;
-        width: calc(var(--size) / 10);
-        transform: rotateY(-90deg);
-      }
-      &-right {
-        right: 0;
-        height: 100%;
-        width: calc(var(--size) / 10);
-        transform: rotateY(90deg);
-      }
-      .circle {
-        --size: 24em;
-      }
+      border: calc(var(--size) / 20) solid transparent;
+      border-image: url("~@public/image/wood.png") 30;
     }
-    .squareBox {
-      bottom: 0;
-      transform: translate(-50%, -35%) rotateZ(45deg);
+  }
+  .square-front {
+    transform: translateZ(calc(var(--size) / 20));
+  }
+  .square-back {
+    transform: translateZ(calc(var(--size) / -20));
+  }
+  .square-top,
+  .square-bottom,
+  .square-left,
+  .square-right {
+    position: absolute;
+    display: block;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: calc(var(--size) / 10);
+    background-color: transparent;
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      transform-style: preserve-3d;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: var(--wood-color);
+      background-image: url("~@public/image/wood.png");
+      box-shadow: 0 0 1rem #0007 inset;
     }
-    .square-1 {
-      animation: squareRoll-1 30s linear reverse infinite;
+    &::before {
+      position: absolute;
+      display: block;
+      transform-style: preserve-3d;
+      width: 100%;
+      height: 100%;
+      transform: translateZ(calc(var(--size) / 20));
     }
-    .square-2 {
-      animation: squareRoll-2 15s linear infinite;
-    }
-    .square-3 {
-      animation: squareRoll-1 7.5s linear infinite;
-    }
-    .square-4 {
-      animation: squareRoll-2 3.75s linear reverse infinite;
-    }
+  }
+  .square-top {
+    top: 0;
+    left: 0;
+    transform: rotateX(90deg);
+  }
+  .square-bottom {
+    bottom: 0;
+    left: 0;
+    transform: rotateX(-90deg);
+  }
+  .square-left {
+    left: 0;
+    height: 100%;
+    width: calc(var(--size) / 10);
+    transform: rotateY(-90deg);
+  }
+  .square-right {
+    right: 0;
+    height: 100%;
+    width: calc(var(--size) / 10);
+    transform: rotateY(90deg);
+  }
+  .circle {
+    --size: 24em;
+  }
+  .squareBox {
+    position: absolute;
+    transform-style: preserve-3d;
+    bottom: 0;
+    transform: translate(-50%, -35%) rotateZ(45deg);
+  }
+  .square-1 {
+    animation: squareRoll-1 30s linear reverse infinite;
+  }
+  .square-2 {
+    animation: squareRoll-2 15s linear infinite;
+  }
+  .square-3 {
+    animation: squareRoll-1 7.5s linear infinite;
+  }
+  .square-4 {
+    animation: squareRoll-2 3.75s linear reverse infinite;
   }
   @keyframes roll {
     to {

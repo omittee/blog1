@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Outlet, Route, Routes, Navigate } from "react-router-dom";
 import ArticleList from "./ArticleList";
 import ArticleContainer from "./ArticleContainer";
@@ -26,7 +26,19 @@ function ArticleBoard() {
   const [regStr, setRegStr] = useState("");
   const [tags, setTags] = useState([] as tagType[]);
   const [isLogin, setLogin] = useState(checkLogin());
-  const MemoArticleList = React.memo(ArticleList);
+  const { toggleAnime } = useContext(AnimeContext);
+  function updatePage(page: number) {
+    toggleAnime();
+    setCurPage(page);
+    getArticle(page, articleNumPerPage, regStr).then((res) => {
+      setArticles(res ?? []);
+    });
+  }
+  function updateReg(regStr: string) {
+    toggleAnime();
+    setCurPage(0);
+    setRegStr(regStr);
+  }
   function initAndRefresh() {
     getArticle().then((res) => {
       setArticles(res ?? []);
@@ -49,61 +61,38 @@ function ArticleBoard() {
   }, [regStr]);
   return (
     <div className="articleBoard" data-component="ArticleBoard" id="main">
-      <AnimeContext.Consumer>
-        {({ toggleAnime }) => {
-          function updatePage(page: number) {
-            toggleAnime();
-            setCurPage(page);
-            getArticle(page, articleNumPerPage, regStr).then((res) => {
-              setArticles(res ?? []);
-            });
-          }
-          function updateReg(regStr: string) {
-            toggleAnime();
-            setCurPage(0);
-            setRegStr(regStr);
-          }
-          return (
-            <ArticleContext.Provider
-              value={{
-                tags,
-                pageNum,
-                curPage,
-                updatePage,
-                updateReg,
-                initAndRefresh,
-              }}
-            >
-              <LoginContext.Provider
-                value={{
-                  isLogin,
-                  setLogin,
-                }}
-              >
-                <NavigatorBar></NavigatorBar>
-                <div className="articleBox">
-                  <Routes>
-                    <Route
-                      path="list"
-                      element={
-                        <MemoArticleList
-                          articles={articles}
-                        />
-                      }
-                    />
-                    <Route path="article/:_id" element={<ArticleContainer />} />
-                    <Route path="*" element={<Navigate to="list" />}></Route>
-                  </Routes>
-
-                  <Outlet></Outlet>
-                </div>
-                ;
-                  <ArticleFooter></ArticleFooter>
-              </LoginContext.Provider>
-            </ArticleContext.Provider>
-          );
+      <ArticleContext.Provider
+        value={{
+          tags,
+          pageNum,
+          curPage,
+          updatePage,
+          updateReg,
+          initAndRefresh,
         }}
-      </AnimeContext.Consumer>
+      >
+        <LoginContext.Provider
+          value={{
+            isLogin,
+            setLogin,
+          }}
+        >
+          <NavigatorBar></NavigatorBar>
+          <div className="articleBox">
+            <Routes>
+              <Route
+                path="list"
+                element={<ArticleList articles={articles} />}
+              />
+              <Route path="article/:_id" element={<ArticleContainer />} />
+              <Route path="*" element={<Navigate to="list" />}></Route>
+            </Routes>
+
+            <Outlet></Outlet>
+          </div>
+          ;<ArticleFooter></ArticleFooter>
+        </LoginContext.Provider>
+      </ArticleContext.Provider>
     </div>
   );
 }

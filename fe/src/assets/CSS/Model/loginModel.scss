@@ -20,23 +20,23 @@
     width: 80%;
     height: 20%;
     background: var(--linear-image);
-      border-radius: 1rem;
-    input {
-      width: 90%;
-      height: 100%;
-      border: none;
-      font-size: 2rem;
-      background-color: transparent;
+    border-radius: 1rem;
+  }
+  input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    font-size: 2rem;
+    background-color: transparent;
+    color: var(--bg-color);
+    padding-left: 1rem;
+    caret-color: var(--bg-color);
+    &::placeholder {
       color: var(--bg-color);
-      padding-left: 1rem;
-      caret-color: var(--bg-color);
-      &::placeholder {
-        color: var(--bg-color);
-        font-size: 1.5rem;
-      }
-      &:focus {
-        outline: none;
-      }
+      font-size: 1.5rem;
+    }
+    &:focus {
+      outline: none;
     }
   }
 

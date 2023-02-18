@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import "@/assets/CSS/Model/model.scss"
 import { showModelProps } from "@/shared/types";
 const HOC = (WrappedComponent: FunctionComponent<showModelProps>) => {

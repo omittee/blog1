@@ -1,4 +1,4 @@
-import React from "react";
+import {memo} from "react";
 import "@/assets/CSS/About/decorativeBall.scss";
 function DecorativeBall() {
   return (
@@ -9,4 +9,4 @@ function DecorativeBall() {
       </div>
   );
 }
-export default DecorativeBall;
+export default memo(DecorativeBall);

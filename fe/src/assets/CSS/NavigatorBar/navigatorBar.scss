@@ -17,15 +17,15 @@
   );
   .logo {
     padding: 0 1rem;
-    svg {
-      width: 8rem;
-      height: 2rem;
-      g {
-        fill: var(--theme-color-level-4);
-        stroke-width: 0.05rem;
-        stroke: var(--theme-color-level-4);
-      }
-    }
+  }
+  svg {
+    width: 8rem;
+    height: 2rem;
+  }
+  g {
+    fill: var(--theme-color-level-4);
+    stroke-width: 0.05rem;
+    stroke: var(--theme-color-level-4);
   }
   .searchBox {
     flex-grow: 1;
@@ -36,42 +36,42 @@
     height: 2.1rem;
 
     box-shadow: 0rem 0rem 1.2rem -0.4rem var(--bg-reverse-color);
-    
+
     border-radius: 1.5rem;
     background: var(--linear);
     max-width: 50%;
-    input {
-      flex-grow: 1;
-      width: 80%;
-      height: 100%;
-      border: none;
-      font-size: 1.2rem;
-      background-color: transparent;
+  }
+  input {
+    flex-grow: 1;
+    width: 80%;
+    height: 100%;
+    border: none;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: var(--bg-color);
+    padding-left: 1rem;
+    caret-color: var(--bg-color);
+    &::placeholder {
       color: var(--bg-color);
-      padding-left: 1rem;
-      caret-color: var(--bg-color);
-      &::placeholder {
-        color: var(--bg-color);
-      }
-      &:focus {
-        outline: none;
-      }
     }
-    i {
-      display: inline-block;
-      width: 2.1rem;
-      height: 2.1rem;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 2.1rem;
-      background: var(--bg-color);
-      vertical-align: middle;
-      cursor: pointer;
-      &::before {
-        background: var(--linear);
-        color: transparent;
-        background-clip: text;
-      }
+    &:focus {
+      outline: none;
+    }
+  }
+  i {
+    display: inline-block;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2.1rem;
+    background: var(--bg-color);
+    vertical-align: middle;
+    cursor: pointer;
+    &::before {
+      background: var(--linear);
+      color: transparent;
+      background-clip: text;
     }
   }
   .theme {
@@ -81,118 +81,118 @@
     position: relative;
     width: 5rem;
     height: 3rem;
-    .switch {
-      position: relative;
-      width: 70%;
-      height: 70%;
-      box-shadow: 0rem 0rem 1.2rem -0.4rem var(--bg-reverse-color);
-      border-radius: 2.1rem;
+  }
+  .switch {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    box-shadow: 0rem 0rem 1.2rem -0.4rem var(--bg-reverse-color);
+    border-radius: 2.1rem;
+    background: var(--linear);
+  }
+  .pattern {
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    transition: all 0.2s ease-in-out;
+  }
+  .moon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    &::before {
+      content: "";
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
       background: var(--linear);
-      .pattern {
-        position: absolute;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 2.1rem;
-        height: 2.1rem;
-        border-radius: 50%;
-        background-color: var(--bg-color);
-        transition: all 0.2s ease-in-out;
-        .moon {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: all 0.2s ease-in-out;
-          &::before {
-            content: "";
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 50%;
-            background: var(--linear);
-            transition: all 0.2s ease-in-out;
-          }
-          &::after {
-            content: "";
-            position: absolute;
-            top: 15%;
-            left: 5%;
-            width: 1.05rem;
-            height: 1.05rem;
-            background-color: var(--bg-color);
-            border-radius: 50%;
-            transition: all 0.2s ease-in-out;
-          }
-        }
-        .sun {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          opacity: 0;
-          transform: scale(0) rotate(0);
-          transition: all 0.2s ease-in-out;
-          &::after {
-            content: "";
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-            background-image: var(--linear);
-            border: 0.15rem solid var(--bg-color);
-            z-index: 2;
-            transition: all 0.2s ease-in-out;
-          }
-          .sunshine {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0.2rem;
-            height: 1.7rem;
-            background-color: var(--theme-color-level-4);
-            border-radius: 0.1rem;
-            transition: all 0.2s ease-in-out;
-            &::before,
-            &::after {
-              position: absolute;
-              content: "";
-              display: block;
-              width: 100%;
-              height: 100%;
-              border-radius: 0.1rem;
-              background-color: var(--theme-color-level-4);
-              transition: all 0.2s ease-in-out;
-            }
-            &::before {
-              transform: rotate(60deg);
-            }
-            &::after {
-              transform: rotate(-60deg);
-            }
-          }
-        }
-      }
+      transition: all 0.2s ease-in-out;
     }
-    #themeControl:checked + .switch {
-      .pattern {
-        left: 1.45rem;
-        .moon {
-          opacity: 0;
-        }
-        .sun {
-          opacity: 1;
-          transform: scale(1) rotate(120deg);
-        }
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 15%;
+      left: 5%;
+      width: 1.05rem;
+      height: 1.05rem;
+      background-color: var(--bg-color);
+      border-radius: 50%;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  .sun {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0) rotate(0);
+    transition: all 0.2s ease-in-out;
+    &::after {
+      content: "";
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-image: var(--linear);
+      border: 0.15rem solid var(--bg-color);
+      z-index: 2;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  .sunshine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.2rem;
+    height: 1.7rem;
+    background-color: var(--theme-color-level-4);
+    border-radius: 0.1rem;
+    transition: all 0.2s ease-in-out;
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.1rem;
+      background-color: var(--theme-color-level-4);
+      transition: all 0.2s ease-in-out;
+    }
+    &::before {
+      transform: rotate(60deg);
+    }
+    &::after {
+      transform: rotate(-60deg);
+    }
+  }
+  #themeControl:checked + .switch {
+    .pattern {
+      left: 1.45rem;
+    }
+    .moon {
+      opacity: 0;
+    }
+    .sun {
+      opacity: 1;
+      transform: scale(1) rotate(120deg);
     }
   }
 }

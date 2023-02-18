@@ -19,13 +19,11 @@
     padding-top: 2.35rem;
     padding-right: 5.1rem;
     animation: shrink 0.3s linear;
-    svg {
-      g {
+    g {
         fill: var(--theme-color-level-4);
         stroke-width: 0.05rem;
         stroke: var(--theme-color-level-4);
       }
-    }
   }
   @keyframes shrink {
     0% {

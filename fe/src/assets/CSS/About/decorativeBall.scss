@@ -7,28 +7,32 @@
   background-color: transparent;
   border-radius: 50%;
   animation: ballRoll 3s linear infinite;
-  & *,
-  & *::before,
-  & *::after {
+  .ud,
+  .lr,
+  .fe {
     position: absolute;
-    display: block;
     transform-style: preserve-3d;
-    box-shadow: 0 0 var(--shadow-size) rgba(var(--rgb-theme-color), 0.9);
-    background-color: transparent;
-    border: calc(var(--size) / 48) solid var(--theme-color-level-4);
-    border-radius: 50%;
-  }
-  & * {
     display: flex;
     justify-content: center;
     align-items: center;
     width: calc(var(--size) / 24 * 23);
     height: calc(var(--size) / 24 * 23);
+    box-shadow: 0 0 var(--shadow-size) rgba(var(--rgb-theme-color), 0.9);
+    background-color: transparent;
+    border: calc(var(--size) / 48) solid var(--theme-color-level-4);
+    border-radius: 50%;
     &::before,
     &::after {
+      position: absolute;
+      display: block;
+      transform-style: preserve-3d;
       content: "";
       width: calc(var(--size) / 2 * 1.732 - var(--size) / 24);
       height: calc(var(--size) / 2 * 1.732 - var(--size) / 24);
+      box-shadow: 0 0 var(--shadow-size) rgba(var(--rgb-theme-color), 0.9);
+      background-color: transparent;
+      border: calc(var(--size) / 48) solid var(--theme-color-level-4);
+      border-radius: 50%;
     }
     &::before {
       transform: translateZ(calc(var(--size) / 4));

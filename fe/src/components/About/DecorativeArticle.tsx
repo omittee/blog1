@@ -1,4 +1,4 @@
-import React from "react";
+import {memo} from "react";
 import { isMobile } from "react-device-detect";
 import DecorativeBall from "./DecorativeBall";
 import "@/assets/CSS/About/decorativeArticle.scss";
@@ -110,4 +110,4 @@ function DecorativeArticle() {
     </div>
   );
 }
-export default DecorativeArticle;
+export default memo(DecorativeArticle);
